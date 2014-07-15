@@ -30,6 +30,9 @@
             <?= Form::label('plustime', 'Дополнительное время') ?>
             <?= Form::text('plustime', $plustime) ?>
 
+            <?= Form::label('description', 'Объяснение:') ?>
+            <?= Form::textarea('description', $description) ?>
+
 
 
             <?= Form::submit('Сохранить', array('class' => 'button')) ?>
