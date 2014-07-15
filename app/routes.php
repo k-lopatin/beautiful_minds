@@ -22,7 +22,11 @@ Route::get('admin/categories/{id}', 'CategoriesController@editCat');
 Route::post('admin/categories/{id}', 'CategoriesController@editCat');
 Route::any('admin/categories/del/{id}', 'CategoriesController@delCat');
 
+/**
+ * Question with number answers
+ */
 Route::any('admin/', 'QuestionNumberController@add');
 Route::any('admin/q_numbers', 'QuestionNumberController@add');
 Route::any('admin/q_numbers/{id}', 'QuestionNumberController@edit');
 Route::any('admin/q_numbers/del/{id}', 'QuestionNumberController@delete');
+Route::any('admin/q_numbers/cat/{id}', 'QuestionNumberController@showFromCat');

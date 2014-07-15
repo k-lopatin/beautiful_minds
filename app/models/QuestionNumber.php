@@ -6,7 +6,7 @@ class QuestionNumber extends Eloquent
     protected $table = 'q_numbers';
     public $timestamps = false; //delete updated_at and created_at properties
 
-    public function add($statement, $answer, $complexity, $category, $plustime, $description){
+    public function add($statement, $answer, $complexity, $category, $plustime, $description, $link){
         if($statement == '' || strlen( $statement ) < 5){
             return 0;
         }
@@ -28,10 +28,11 @@ class QuestionNumber extends Eloquent
         $this->category = $category;
         $this->plustime = $plustime;
         $this->description = $description;
+        $this->link = $link;
         $this->save();
         return 1;
     }
-    public function edit($statement, $answer, $complexity, $category, $plustime, $description){
+    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link){
         if($statement == '' || strlen( $statement ) < 5){
             return 0;
         }
@@ -53,6 +54,7 @@ class QuestionNumber extends Eloquent
         $this->category = $category;
         $this->plustime = $plustime;
         $this->description = $description;
+        $this->link = $link;
         $this->save();
         return 1;
     }

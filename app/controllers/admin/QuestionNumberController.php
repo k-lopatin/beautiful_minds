@@ -11,6 +11,7 @@ class QuestionNumberController extends BaseController
         $this->viewVars['complexity'] = 0;
         $this->viewVars['plustime'] = 0;
         $this->viewVars['description'] = '';
+        $this->viewVars['link'] = '';
 
 
 
@@ -23,7 +24,7 @@ class QuestionNumberController extends BaseController
         if (Input::has('statement')) {
             $q = new QuestionNumber;
             if ( $q->add( Input::get('statement'), Input::get('answer'), Input::get('complexity'),
-                Input::get('category'), Input::get('plustime'), Input::get('description') ) ) {
+                Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link') ) ) {
 
                 $this->viewVars['message'] = 'Вопрос успешно добавлен!';
             } else {
@@ -34,6 +35,7 @@ class QuestionNumberController extends BaseController
                 $this->viewVars['category'] = Input::get('category');
                 $this->viewVars['plustime'] = Input::get('plustime');
                 $this->viewVars['description'] = Input::get('description');
+                $this->viewVars['link'] = Input::get('link');
             }
         }
 
@@ -50,7 +52,7 @@ class QuestionNumberController extends BaseController
 
         if (Input::has('statement')) {
             if ( $q->edit( Input::get('statement'), Input::get('answer'), Input::get('complexity'),
-                Input::get('category'), Input::get('plustime'), Input::get('description') ) ) {
+                Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link') ) ) {
 
                 $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
             } else {
@@ -61,6 +63,7 @@ class QuestionNumberController extends BaseController
                 $this->viewVars['category'] = Input::get('category');
                 $this->viewVars['plustime'] = Input::get('plustime');
                 $this->viewVars['description'] = Input::get('description');
+                $this->viewVars['link'] = Input::get('link');
             }
         }
 
@@ -71,6 +74,7 @@ class QuestionNumberController extends BaseController
         $this->viewVars['category'] = $q->category;
         $this->viewVars['description'] = $q->description;
         $this->viewVars['id'] = $q->id;
+        $this->viewVars['link'] = $q->link;
 
         $this->viewVars['questions'] = QuestionNumber::all();
         return View::make('admin.questions.editQuestionNumbers', $this->viewVars);
@@ -101,6 +105,26 @@ class QuestionNumberController extends BaseController
 
         $this->viewVars['questions'] = QuestionNumber::all();
         return View::make('admin.questions.delQuestionNumbers', $this->viewVars);
+    }
+
+    public function showFromCat($id)
+    {
+        if ( !is_numeric($id) ) {
+            return 'error';
+        }
+        $q = QuestionNumber::where('category', '=', $id)->get();
+        $cat = Category::find($id);
+        $this->viewVars['cur_id'] = $id;
+        if($id != 0){
+            $this->viewVars['catName'] = $cat->name;
+        } else {
+            $this->viewVars['catName'] = 'Без категории';
+        }
+
+
+
+        $this->viewVars['questions'] = $q;
+        return View::make('admin.questions.list', $this->viewVars);
     }
 
 }

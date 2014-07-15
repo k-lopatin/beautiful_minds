@@ -33,7 +33,8 @@
             <?= Form::label('description', 'Объяснение:') ?>
             <?= Form::textarea('description', $description) ?>
 
-
+            <?= Form::label('link', 'Ссылка на материал') ?>
+            <?= Form::text('link', $link) ?>
 
             <?= Form::submit('Сохранить', array('class' => 'button')) ?>
             <a href="/admin/q_numbers" class="button secondary">Добавить новый вопрос</a>
@@ -42,7 +43,7 @@
     </div>
 <?= Form::close() ?>
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-8 columns">
             <h5>Вопросы на числа:</h5>
             <table>
                 <?php
@@ -54,6 +55,18 @@
                 }
                 ?>
             </table>
+
+        </div>
+        <div class="large-4 columns">
+            <h5>Просмотреть вопросы из категории:</h5>
+            <ul>
+                <li><a href="/admin/q_numbers/cat/0">Без категории</a></li>
+                <?php
+                foreach ($categories as $c) {
+                    echo '<li><a href="/admin/q_numbers/cat/' . $c->id . '"> ' . $c->name . ' </a></li>';
+                }
+                ?>
+            </ul>
 
         </div>
     </div>
