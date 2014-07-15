@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/assets/admin/css/foundation.css"/>
     <link rel="stylesheet" href="/assets/admin/css/style.css"/>
     <script src="/assets/admin/js/vendor/modernizr.js"></script>
-    <title>Добавить категорию</title>
+    <title><?= $title ?></title>
 
 </head>
 <body>
@@ -17,6 +17,7 @@
         <!-- Right Nav Section -->
         <ul class="left">
             <li><a href="/admin/categories">Категории</a></li>
+            <li><a href="/admin/q_numbers">Вопросы (числа)</a></li>
         </ul>
     </section>
 </nav>

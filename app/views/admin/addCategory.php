@@ -1,4 +1,4 @@
-<?= View::make('admin.header') ?>
+<?= View::make('admin.header', array('title' => $title) ) ?>
 <?= Form::open(array('url' => 'admin/categories')) ?>
 <?= Form::token() ?>
 <div class="row">

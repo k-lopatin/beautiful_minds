@@ -2,6 +2,7 @@
 
 class CategoriesController extends BaseController
 {
+    private $title = "Категории";
 
     public function addCat()
     {
@@ -21,7 +22,7 @@ class CategoriesController extends BaseController
         $categories = Category::all();
         return View::make('admin.addCategory',
             array('message' => $message, 'newCatName' => $newCatName,
-                'categories' => $categories));
+                'categories' => $categories, 'title' => $this->title));
     }
 
     public function editCat($id)
@@ -42,7 +43,7 @@ class CategoriesController extends BaseController
 
             return View::make('admin.editCategory',
                 array('message' => $message, 'cat' => $cat,
-                    'categories' => $categories));
+                    'categories' => $categories, 'title' => $this->title));
         }
 
     }
@@ -60,14 +61,14 @@ class CategoriesController extends BaseController
                     $newCatName = '';
                     return View::make('admin.addCategory',
                         array('message' => $message, 'newCatName' => $newCatName,
-                            'categories' => $categories));
+                            'categories' => $categories, 'title' => $this->title));
 
                 } else {
                     $categories = Category::all();
                     $message = 'УУУпс. Ошибонька.';
                     return View::make('admin.delCategory',
                         array('message' => $message, 'cat' => $cat,
-                            'categories' => $categories));
+                            'categories' => $categories, 'title' => $this->title));
                 }
             }
 
@@ -75,7 +76,7 @@ class CategoriesController extends BaseController
 
             return View::make('admin.delCategory',
                 array('message' => $message, 'cat' => $cat,
-                    'categories' => $categories));
+                    'categories' => $categories, 'title' => $this->title));
         }
 
     }
