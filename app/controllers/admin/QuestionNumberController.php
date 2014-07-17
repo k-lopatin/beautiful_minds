@@ -194,8 +194,10 @@ class QuestionNumberController extends BaseController
     {
         if ($q->files != '') {
             $files = json_decode($q->files);
-            foreach ($files as $i => $f) {
-                $this->filesList['file' . $i] = $f;
+            if($files !== NULL) {
+                foreach ($files as $i => $f) {
+                    $this->filesList['file' . $i] = $f;
+                }
             }
             $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         }
