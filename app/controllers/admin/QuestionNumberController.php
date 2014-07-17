@@ -17,6 +17,7 @@ class QuestionNumberController extends BaseController
         $this->viewVars['link'] = '';
 
         $this->viewVars['categories'] = Category::all();
+        $this->viewVars['typeTitle'] = 'числа';
 
         //Files inputs
 
@@ -121,7 +122,7 @@ class QuestionNumberController extends BaseController
     }
 
 
-    
+
 
 
     /*-------------------------------------------------

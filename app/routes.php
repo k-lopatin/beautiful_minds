@@ -30,3 +30,11 @@ Route::any('admin/q_numbers', 'QuestionNumberController@add');
 Route::any('admin/q_numbers/{id}', 'QuestionNumberController@edit');
 Route::any('admin/q_numbers/del/{id}', 'QuestionNumberController@delete');
 Route::any('admin/q_numbers/cat/{id}', 'QuestionNumberController@showFromCat');
+/**
+ * Question with word answers
+ */
+Route::any('admin/', 'QuestionWordController@add');
+Route::any('admin/q_words', 'QuestionWordController@add');
+Route::any('admin/q_words/{id}', 'QuestionWordController@edit');
+Route::any('admin/q_words/del/{id}', 'QuestionWordController@delete');
+Route::any('admin/q_words/cat/{id}', 'QuestionWordController@showFromCat');

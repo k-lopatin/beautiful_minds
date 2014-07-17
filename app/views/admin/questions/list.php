@@ -5,7 +5,7 @@
             <a href="/admin/q_numbers/" class="button">Назад</a>
         </div>
         <div class="large-8 columns">
-            <h5>Вопросы на числа: Категория <b><?=$catName?></b></h5>
+            <h5>Вопросы на <?=$typeTitle?>: Категория <b><?=$catName?></b></h5>
             <table>
                 <?php
                 foreach ($questions as $q) {
