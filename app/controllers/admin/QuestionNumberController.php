@@ -28,14 +28,7 @@ class QuestionNumberController extends BaseController
 
                 $this->viewVars['message'] = 'Вопрос успешно добавлен!';
             } else {
-                $this->viewVars['message'] = 'Корректно заполните все поля!';
-                $this->viewVars['statement'] = Input::get('statement');
-                $this->viewVars['answer'] = Input::get('answer');
-                $this->viewVars['complexity'] = Input::get('complexity');
-                $this->viewVars['category'] = Input::get('category');
-                $this->viewVars['plustime'] = Input::get('plustime');
-                $this->viewVars['description'] = Input::get('description');
-                $this->viewVars['link'] = Input::get('link');
+                $this->setViewVarsByInput();
             }
         }
 
@@ -50,31 +43,18 @@ class QuestionNumberController extends BaseController
         }
         $q = QuestionNumber::find($id);
 
+
         if (Input::has('statement')) {
             if ( $q->edit( Input::get('statement'), Input::get('answer'), Input::get('complexity'),
                 Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link') ) ) {
 
                 $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
             } else {
-                $this->viewVars['message'] = 'Корректно заполните все поля!';
-                $this->viewVars['statement'] = Input::get('statement');
-                $this->viewVars['answer'] = Input::get('answer');
-                $this->viewVars['complexity'] = Input::get('complexity');
-                $this->viewVars['category'] = Input::get('category');
-                $this->viewVars['plustime'] = Input::get('plustime');
-                $this->viewVars['description'] = Input::get('description');
-                $this->viewVars['link'] = Input::get('link');
+                $this->setViewVarsByInput();
             }
         }
 
-        $this->viewVars['statement'] = $q->statement;
-        $this->viewVars['answer'] = $q->answer;
-        $this->viewVars['complexity'] = $q->complexity;
-        $this->viewVars['plustime'] = $q->plustime;
-        $this->viewVars['category'] = $q->category;
-        $this->viewVars['description'] = $q->description;
-        $this->viewVars['id'] = $q->id;
-        $this->viewVars['link'] = $q->link;
+        $this->setViewVarsByQ($q);
 
         $this->viewVars['questions'] = QuestionNumber::all();
         return View::make('admin.questions.editQuestionNumbers', $this->viewVars);
@@ -127,4 +107,27 @@ class QuestionNumberController extends BaseController
         return View::make('admin.questions.list', $this->viewVars);
     }
 
+
+    function setViewVarsByInput(){
+        $this->viewVars['message'] = 'Корректно заполните все поля!';
+        $this->viewVars['statement'] = Input::get('statement');
+        $this->viewVars['answer'] = Input::get('answer');
+        $this->viewVars['complexity'] = Input::get('complexity');
+        $this->viewVars['category'] = Input::get('category');
+        $this->viewVars['plustime'] = Input::get('plustime');
+        $this->viewVars['description'] = Input::get('description');
+        $this->viewVars['link'] = Input::get('link');
+    }
+
+
+    function setViewVarsByQ( $q ){
+        $this->viewVars['statement'] = $q->statement;
+        $this->viewVars['answer'] = $q->answer;
+        $this->viewVars['complexity'] = $q->complexity;
+        $this->viewVars['plustime'] = $q->plustime;
+        $this->viewVars['category'] = $q->category;
+        $this->viewVars['description'] = $q->description;
+        $this->viewVars['id'] = $q->id;
+        $this->viewVars['link'] = $q->link;
+    }
 }

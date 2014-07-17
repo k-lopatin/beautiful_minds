@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-7 columns">
             <?= Form::label('statement', 'Вопрос:') ?>
             <?= Form::textarea('statement', $statement) ?>
 
@@ -40,6 +40,7 @@
             <a href="/admin/q_numbers" class="button secondary">Добавить новый вопрос</a>
             <a href="/admin/q_numbers/del/<?=$id?>" class="button alert">Удалить</a>
         </div>
+        <?php //View::make('admin.questions.filesUpload', array('files' => $files)) ?>
     </div>
 <?= Form::close() ?>
     <div class="row">
