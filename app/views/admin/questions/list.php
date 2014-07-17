@@ -33,7 +33,6 @@
                     } else {
                         echo '<li><a href="/admin/q_numbers/cat/' . $c->id . '"> ' . $c->name . ' </a></li>';
                     }
-
                 }
                 ?>
             </ul>
