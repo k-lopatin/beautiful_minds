@@ -1,3 +1,7 @@
 .inline {
     display: inline-block;
 }
+.admin_uploaded_img {
+    height: 120px;
+    margin: 3px 0 5px 0;
+}
