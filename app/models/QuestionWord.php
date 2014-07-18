@@ -6,7 +6,7 @@ class QuestionWord extends Eloquent
     protected $table = 'q_words';
     public $timestamps = false; //delete updated_at and created_at properties
 
-    public function add($statement, $answer, $complexity, $category, $plustime, $description, $link){
+    public function add($statement, $answer, $complexity, $category, $plustime, $description, $link, $files){
         if($statement == '' || strlen( $statement ) < 5){
             return 0;
         }
@@ -29,10 +29,11 @@ class QuestionWord extends Eloquent
         $this->plustime = $plustime;
         $this->description = $description;
         $this->link = $link;
+        $this->files = $files;
         $this->save();
         return 1;
     }
-    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link){
+    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link, $files){
         if($statement == '' || strlen( $statement ) < 5){
             return 0;
         }
@@ -55,6 +56,7 @@ class QuestionWord extends Eloquent
         $this->plustime = $plustime;
         $this->description = $description;
         $this->link = $link;
+        $this->files = $files;
         $this->save();
         return 1;
     }

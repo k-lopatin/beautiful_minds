@@ -1,5 +1,5 @@
 <?= View::make('admin.header', array('title' => $title)) ?>
-<?= Form::open(array('url' => 'admin/q_words')) ?>
+<?= Form::open(array('url' => 'admin/q_words', 'files'=> true)) ?>
 <?= Form::token() ?>
     <div class="row">
         <div class="large-12 columns">
@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-7 columns">
             <?= Form::label('statement', 'Вопрос:') ?>
             <?= Form::textarea('statement', $statement) ?>
 
@@ -40,6 +40,7 @@
 
             <?= Form::submit('Добавить', array('class' => 'button')) ?>
         </div>
+        <?= $filesView ?>
     </div>
 <?= Form::close() ?>
     <div class="row">

@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-7 columns">
             <?= Form::hidden('is', 1) ?>
             <?= Form::submit( 'Да, удалить', array('class' => 'button alert') ) ?>
             <a href="/admin/q_numbers" class="button">Нет, верни меня обратно</a>
