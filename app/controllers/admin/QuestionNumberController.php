@@ -7,6 +7,9 @@ class QuestionNumberController extends BaseController
 
     function __construct()
     {
+        if( !UserLibrary::loginAdmin() ){
+            exit();
+        }
         $this->viewVars['message'] = '';
         $this->viewVars['title'] = 'Вопросы';
         $this->viewVars['statement'] = '';
@@ -26,7 +29,6 @@ class QuestionNumberController extends BaseController
         }
 
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
-
     }
 
     public function add()

@@ -15,6 +15,11 @@
 /**
  * Admin routes
  */
+Route::any('admin/logout', function(){
+	Auth::logout();
+	return Redirect::to('admin');
+});
+
 Route::get('/', 'HomeController@showWelcome');
 Route::get('admin/categories', 'CategoriesController@addCat');
 Route::post('admin/categories', 'CategoriesController@addCat');
@@ -38,3 +43,7 @@ Route::any('admin/q_words', 'QuestionWordController@add');
 Route::any('admin/q_words/{id}', 'QuestionWordController@edit');
 Route::any('admin/q_words/del/{id}', 'QuestionWordController@delete');
 Route::any('admin/q_words/cat/{id}', 'QuestionWordController@showFromCat');
+
+/**
+* END ROUTES
+*/

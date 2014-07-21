@@ -6,6 +6,9 @@ class CategoriesController extends BaseController
 
     public function addCat()
     {
+        if( !UserLibrary::loginAdmin() ){
+            exit();
+        }
         $message = '';
         $newCatName = '';
 

@@ -3,7 +3,11 @@
 class QuestionWordController extends BaseController
 {
     private $viewVars = [];
+
     function __construct(){
+        if( !UserLibrary::loginAdmin() ){
+            exit();
+        }
         $this->viewVars['message'] = '';
         $this->viewVars['title'] = 'Вопросы';
         $this->viewVars['statement'] = '';
