@@ -44,6 +44,10 @@ Route::any('admin/q_words/{id}', 'QuestionWordController@edit');
 Route::any('admin/q_words/del/{id}', 'QuestionWordController@delete');
 Route::any('admin/q_words/cat/{id}', 'QuestionWordController@showFromCat');
 
+
+
+Route::any('admin/qlist', 'QuestionController@showList');
+
 /**
 * END ROUTES
 */

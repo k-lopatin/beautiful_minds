@@ -3,6 +3,11 @@
 <?= Form::token() ?>
     <div class="row">
         <div class="large-12 columns">
+            <h4>Удалить | <a href="/admin/qlist?type=number">Все вопросы на числа</a></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
             <h5>Вы действительно хотите удалить вопрос <br /> <?=$statement;?></h5>
         </div>
     </div>
@@ -16,8 +21,8 @@
 
 <?= Form::close() ?>
     <div class="row">
-        <div class="large-8 columns">
-            <h5>Вопросы на числа:</h5>
+        <div class="large-12 columns">
+            <h5>Последние вопросы: | <a href="/admin/qlist?type=number">Все вопросы</a></h5>
             <table>
                 <?php
                 foreach ($questions as $q) {
@@ -28,18 +33,6 @@
                 }
                 ?>
             </table>
-
-        </div>
-        <div class="large-4 columns">
-            <h5>Просмотреть вопросы из категории:</h5>
-            <ul>
-                <li><a href="/admin/q_numbers/cat/0">Без категории</a></li>
-                <?php
-                foreach ($categories as $c) {
-                    echo '<li><a href="/admin/q_numbers/cat/' . $c->id . '"> ' . $c->name . ' </a></li>';
-                }
-                ?>
-            </ul>
 
         </div>
     </div>
