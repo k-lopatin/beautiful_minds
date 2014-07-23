@@ -60,19 +60,34 @@ class QuestionTestController extends BaseController
             return 'error';
         }
         $q = QuestionTest::find($id);
+        $count=0;
+        $i=0;
+        while ($i <= 5) {
+            if (Input::has('test' . $i)) {
+                $tests[$i] = Input::get('test' . $i);
+                } else {
+                    // echo Input::get('test' . $i);
+                    echo $count++;;
+                    //$count++;
+                }
+            $i++;
+        }
+        if($count>4)
+            $this->setViewVarsByInput();
+        else
+        {
+            if (Input::has('statement')) {
+                if ($q->edit(Input::get('statement'), Input::get('answer'), Input::get('complexity'),
+                    Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
+                    $this->getFilesByInput($q), $this->getTestsByInput())
+                ) {
 
-        if (Input::has('statement')) {
-            if ($q->edit(Input::get('statement'), Input::get('answer'), Input::get('complexity'),
-                Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
-                $this->getFilesByInput($q), $this->getTestsByInput())
-            ) {
-
-                $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
-            } else {
-                $this->setViewVarsByInput();
+                    $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
+                } else {
+                    $this->setViewVarsByInput();
+                }
             }
         }
-
         $this->setViewVarsByQ($q);
 
         $this->viewVars['questions'] = QuestionTest::all();
@@ -180,12 +195,13 @@ class QuestionTestController extends BaseController
                 $tests = json_decode($q->tests, true);
             }
 
-            echo Input::has('test1');
+           // echo Input::has('test1');
             while ($i <= 5) {
                 if (Input::has('test' . $i)) {
                     $tests[$i] = Input::get('test' . $i);
                     } else {
-                        echo Input::get('test' . $i);
+                       echo Input::get('test' . $i);
+                       //$count++;
                     }
                     $i++;
                 }
