@@ -39,17 +39,33 @@ class QuestionTestController extends BaseController
 
         if (Input::has('statement')) {
             $q = new QuestionTest;
-            if ( $q->add( Input::get('statement'), Input::get('answer'), Input::get('complexity'),
-                Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
-                $this->getFilesByInput(), $this->getTestsByInput())
-                ) {
-
-                $this->viewVars['message'] = 'Вопрос успешно добавлен!';
-            } else {
+            $count=0;
+            $i=0;
+            while ($i <= 5) {
+                if (Input::has('test' . $i)) {
+                    $tests[$i] = Input::get('test' . $i);
+                    } else {
+                        // echo Input::get('test' . $i);
+                        echo $count++;;
+                        //$count++;
+                    }
+                $i++;
+            }
+            if($count>4)
                 $this->setViewVarsByInput();
+            else
+            {
+                if ( $q->add( Input::get('statement'), Input::get('answer'), Input::get('complexity'),
+                    Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
+                    $this->getFilesByInput(), $this->getTestsByInput())
+                    ) {
+
+                    $this->viewVars['message'] = 'Вопрос успешно добавлен!';
+                } else {
+                    $this->setViewVarsByInput();
+                }
             }
         }
-
         $this->viewVars['questions'] = QuestionTest::all();
         return View::make('admin.questions.addQuestionTests', $this->viewVars);
     }
