@@ -3,10 +3,10 @@
 class QuestionTest extends Eloquent
 {
 
-    protected $table = 'q_words';
+    protected $table = 'q_tests';
     public $timestamps = false; //delete updated_at and created_at properties
 
-    public function add($statement, $answer, $complexity, $category, $plustime, $description, $link, $files){
+    public function add($statement, $answer, $complexity, $category, $plustime, $description, $link, $files, $tests){
         if($statement == '' || strlen( $statement ) < 5){
             return 0;
         }
@@ -30,10 +30,11 @@ class QuestionTest extends Eloquent
         $this->description = $description;
         $this->link = $link;
         $this->files = $files;
+        $this->tests = $tests;
         $this->save();
         return 1;
     }
-    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link, $files){
+    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link, $files, $tests){
         if($statement == '' || strlen( $statement ) < 5){
             return 0;
         }
@@ -57,6 +58,7 @@ class QuestionTest extends Eloquent
         $this->description = $description;
         $this->link = $link;
         $this->files = $files;
+        $this->tests = $tests;
         $this->save();
         return 1;
     }

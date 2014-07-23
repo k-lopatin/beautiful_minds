@@ -180,19 +180,15 @@ class QuestionTestController extends BaseController
                 $tests = json_decode($q->tests, true);
             }
 
-            echo Input::hasFile('test1');
+            echo Input::has('test1');
             while ($i <= 5) {
-                if (Input::hasFile('test' . $i)) {
-                    $testname = time() . $i . 'txt';
-                    $upload_success = Input::text('test' . $i)->move(public_path() . "/game_tests/", $testname);
-                    if ($upload_success) {
-                        $tests[$i] = '/game_tests/' . $testname;
+                if (Input::has('test' . $i)) {
+                    $tests[$i] = Input::get('test' . $i);
                     } else {
-                        echo Input::text('test' . $i)->getRealPath();
+                        echo Input::get('test' . $i);
                     }
+                    $i++;
                 }
-                $i++;
-            }
             return json_encode($tests);
         }
         function setTestsByQ($q)
@@ -204,7 +200,7 @@ class QuestionTestController extends BaseController
                         $this->testsList['test' . $i] = $t;
                     }
                 }
-                $this->viewVars['testsView'] = View::make('admin.questions.testAnswersUpload', $this->testsList);
+                $this->viewVars['testsView'] = View::make('admin.questions.testsAnswersUpload', $this->testsList);
             }
         }
 
