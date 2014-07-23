@@ -43,7 +43,15 @@ Route::any('admin/q_words', 'QuestionWordController@add');
 Route::any('admin/q_words/{id}', 'QuestionWordController@edit');
 Route::any('admin/q_words/del/{id}', 'QuestionWordController@delete');
 Route::any('admin/q_words/cat/{id}', 'QuestionWordController@showFromCat');
+/**
+ * Question with test answers
+*/
 
+Route::any('admin/', 'QuestionTestController@add');
+Route::any('admin/q_tests', 'QuestionTestController@add');
+Route::any('admin/q_tests/{id}', 'QuestionTestController@edit');
+Route::any('admin/q_tests/del/{id}', 'QuestionTestController@delete');
+Route::any('admin/q_tests/cat/{id}', 'QuestionTestController@showFromCat');
 
 
 Route::any('admin/qlist', 'QuestionController@showList');
