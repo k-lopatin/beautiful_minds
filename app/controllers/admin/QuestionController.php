@@ -25,8 +25,12 @@ class QuestionController extends BaseController
         for ($i = 1; $i <= 5; $i++) {
             $this->filesList['file' . $i] = '';
         }
+         for ($i = 1; $i <= 5; $i++) {
+            $this->testsList['test' . $i] = '';
+         }
 
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
+        $this->viewVars['testsView'] = View::make('admin.questions.testsAnswersUpload', $this->testsList);
 
         $this->viewVars['linkType'] = '';
         $this->viewVars['linkCategory'] = '';
@@ -58,6 +62,12 @@ class QuestionController extends BaseController
                 $this->viewVars['typeTitle'] = 'Слова';
                 $this->viewVars['linkType'] = 'word';
                 $this->viewVars['linkToQ'] = 'q_words';
+                break;
+            case 'test':
+                $questions = 'QuestionTest';
+                $this->viewVars['typeTitle'] = 'Тесты';
+                $this->viewVars['linkType'] = 'test';
+                $this->viewVars['linkToQ'] = 'q_tests';
                 break;
             default:
                 return 'error';
