@@ -52,19 +52,19 @@ class QuestionController extends BaseController
 
         switch( Input::get('type') ){
             case 'number':
-                $questions = 'QuestionNumber';
+                $questions = QuestionNumber::orderBy('id', 'desc');
                 $this->viewVars['typeTitle'] = 'Числа';
                 $this->viewVars['linkType'] = 'number';
                 $this->viewVars['linkToQ'] = 'q_numbers';
                 break;
             case 'word':
-                $questions = 'QuestionWord';
+                $questions = QuestionWord::orderBy('id', 'desc');
                 $this->viewVars['typeTitle'] = 'Слова';
                 $this->viewVars['linkType'] = 'word';
                 $this->viewVars['linkToQ'] = 'q_words';
                 break;
             case 'test':
-                $questions = 'QuestionTest';
+                $questions = QuestionTest::orderBy('id', 'desc');
                 $this->viewVars['typeTitle'] = 'Тесты';
                 $this->viewVars['linkType'] = 'test';
                 $this->viewVars['linkToQ'] = 'q_tests';
@@ -74,7 +74,7 @@ class QuestionController extends BaseController
         }
         $isSort = false;
         $where = '';
-        $this->viewVars['count'] = $questions::count();
+        $this->viewVars['count'] = $questions->count();
 
         if( Input::has('complexity') && Input::get('complexity') > 0 && Input::get('complexity') <=10 ){
             //$questions = $questions->where( 'complexity', '=', Input::get('complexity') );
@@ -96,11 +96,9 @@ class QuestionController extends BaseController
         }
 
         if( $isSort ){
-            $questions = $questions::whereRaw( $where );
-            $this->viewVars['questions'] = $questions->paginate($this->q_per_page);
-        } else {
-            $this->viewVars['questions'] = $questions::paginate($this->q_per_page);
+            $questions = $questions->whereRaw( $where );
         }
+        $this->viewVars['questions'] = $questions->paginate($this->q_per_page);
 
         return View::make('admin.questions.list', $this->viewVars);
 

@@ -98,7 +98,7 @@ class QuestionTestController extends BaseController
         }
         $this->setViewVarsByQ($q);
 
-        $this->viewVars['questions'] = QuestionTest::all();
+        $this->viewVars['questions'] = QuestionTest::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.editQuestionTests', $this->viewVars);
     }
 
@@ -125,7 +125,7 @@ class QuestionTestController extends BaseController
             }
         }
 
-        $this->viewVars['questions'] = QuestionTest::all();
+        $this->viewVars['questions'] = QuestionTest::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.delQuestionTests', $this->viewVars);
     }
 

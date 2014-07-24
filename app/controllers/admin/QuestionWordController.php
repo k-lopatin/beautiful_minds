@@ -45,7 +45,7 @@ class QuestionWordController extends BaseController
             }
         }
 
-        $this->viewVars['questions'] = QuestionWord::all();
+        $this->viewVars['questions'] = QuestionWord::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.addQuestionWords', $this->viewVars);
     }
 
@@ -70,7 +70,7 @@ class QuestionWordController extends BaseController
 
         $this->setViewVarsByQ($q);
 
-        $this->viewVars['questions'] = QuestionWord::all();
+        $this->viewVars['questions'] = QuestionWord::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.editQuestionWords', $this->viewVars);
     }
 

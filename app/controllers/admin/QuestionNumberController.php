@@ -47,7 +47,7 @@ class QuestionNumberController extends BaseController
             }
         }
 
-        $this->viewVars['questions'] = QuestionNumber::all();
+        $this->viewVars['questions'] = QuestionNumber::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.addQuestionNumbers', $this->viewVars);
     }
 
@@ -73,7 +73,7 @@ class QuestionNumberController extends BaseController
 
         $this->setViewVarsByQ($q);
 
-        $this->viewVars['questions'] = QuestionNumber::all();
+        $this->viewVars['questions'] = QuestionNumber::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.editQuestionNumbers', $this->viewVars);
     }
 

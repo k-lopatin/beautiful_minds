@@ -1,7 +1,10 @@
 .inline {
-    display: inline-block;
+	display: inline-block;
 }
 .admin_uploaded_img {
-    height: 120px;
-    margin: 3px 0 5px 0;
+	height: 120px;
+	margin: 3px 0 5px 0;
+}
+table tr:nth-of-type(even) {
+	background: #f2f2f2;
 }
