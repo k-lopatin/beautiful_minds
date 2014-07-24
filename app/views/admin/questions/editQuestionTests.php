@@ -16,9 +16,6 @@
             <?= Form::label('statement', 'Вопрос:') ?>
             <?= Form::textarea('statement', $statement) ?>
 
-            <?= Form::label('answer', 'Ответ:') ?>
-            <?= Form::text('answer', $answer) ?>
-
             <?= $testsView ?>
 
             <?= Form::label('complexity', 'Сложность: (от 1 до 10)') ?>
@@ -58,7 +55,7 @@
                 foreach ($questions as $q) {
                     echo '<tr>';
                     echo '<td><a href="/admin/q_tests/' . $q->id . '"> ' . $q->statement . ' </a></td>';
-                    echo '<td>Ответ: ' . $q->answer . ' </td>';
+                    echo '<td>Ответ: ' . $testAnswers[ $q->id ] . ' </td>';
                     echo '</tr>';
                 }
                 ?>

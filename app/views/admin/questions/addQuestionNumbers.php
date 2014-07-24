@@ -16,9 +16,6 @@
             <?= Form::label('statement', 'Вопрос:') ?>
             <?= Form::textarea('statement', $statement) ?>
 
-            <?= Form::label('answer', 'Ответ:') ?>
-            <?= Form::text('answer', $answer) ?>
-
             <?= Form::label('complexity', 'Сложность: (от 1 до 10)') ?>
             <?= Form::text('complexity', $complexity) ?>
 

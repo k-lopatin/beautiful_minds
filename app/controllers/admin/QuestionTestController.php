@@ -2,33 +2,22 @@
 
 class QuestionTestController extends BaseController
 {
+    use QuestionTrait;
+
     private $viewVars = [];
     private $filesList = [];
     private $testsList = [];
+
+    private $model = 'QuestionTest';
 
     function __construct(){
         if( !UserLibrary::loginAdmin() ){
             exit();
         }
-        $this->viewVars['message'] = '';
-        $this->viewVars['title'] = 'Вопросы';
-        $this->viewVars['statement'] = '';
-        $this->viewVars['answer'] = '';
-        $this->viewVars['complexity'] = 0;
-        $this->viewVars['plustime'] = 0;
-        $this->viewVars['description'] = '';
-        $this->viewVars['link'] = '';
-
-        $this->viewVars['typeTitle'] = 'тесты';
-        $this->viewVars['categories'] = Category::all();
-
-        for ($i = 1; $i <= 5; $i++) {
-            $this->filesList['file' . $i] = '';
-        }
+        $this->setViewVarsStandart();
         for ($i = 1; $i <= 5; $i++) {
             $this->testsList['test' . $i] = '';
         }
-
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         $this->viewVars['testsView'] = View::make('admin.questions.testsAnswersUpload', $this->testsList);
 
@@ -51,7 +40,7 @@ class QuestionTestController extends BaseController
                 $this->setViewVarsByInput();
             else
             {
-                if ( $q->add( Input::get('statement'), Input::get('answer'), Input::get('complexity'),
+                if ( $q->add( Input::get('statement'), Input::get('complexity'),
                     Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
                     $this->getFilesByInput(), $this->getTestsByInput())
                     ) {
@@ -62,7 +51,7 @@ class QuestionTestController extends BaseController
                 }
             }
         }
-        $this->viewVars['questions'] = QuestionTest::all();
+        $this->viewVars['questions'] = QuestionTest::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.addQuestionTests', $this->viewVars);
     }
 
@@ -85,11 +74,10 @@ class QuestionTestController extends BaseController
         else
         {
             if (Input::has('statement')) {
-                if ($q->edit(Input::get('statement'), Input::get('answer'), Input::get('complexity'),
+                if ($q->edit(Input::get('statement'), Input::get('complexity'),
                     Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
                     $this->getFilesByInput($q), $this->getTestsByInput())
                 ) {
-
                     $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
                 } else {
                     $this->setViewVarsByInput();
@@ -157,7 +145,6 @@ class QuestionTestController extends BaseController
         {
             $this->viewVars['message'] = 'Корректно заполните все поля!';
             $this->viewVars['statement'] = Input::get('statement');
-            $this->viewVars['answer'] = Input::get('answer');
             $this->viewVars['complexity'] = Input::get('complexity');
             $this->viewVars['category'] = Input::get('category');
             $this->viewVars['plustime'] = Input::get('plustime');
@@ -177,12 +164,14 @@ class QuestionTestController extends BaseController
                 $this->testsList['test' . $i] = Input::get('test' . $i);
             }
             $this->viewVars['testsView'] = View::make('admin.questions.testsAnswersUpload', $this->testsList);
+            for ($i = 1; $i <= 5; $i++) {
+                $this->testsAnswers[$i] = '';
+            }
         }
 
         function setViewVarsByQ($q)
         {
             $this->viewVars['statement'] = $q->statement;
-            $this->viewVars['answer'] = $q->answer;
             $this->viewVars['complexity'] = $q->complexity;
             $this->viewVars['plustime'] = $q->plustime;
             $this->viewVars['category'] = $q->category;
