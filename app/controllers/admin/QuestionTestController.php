@@ -195,8 +195,8 @@ class QuestionTestController extends BaseController
             while ($i <= 5) {
                 if (Input::has('test' . $i)) {
                     $tests[$i] = Input::get('test' . $i);
-                    $i++;
                 }
+                $i++;
             }
             return json_encode($tests);
         }

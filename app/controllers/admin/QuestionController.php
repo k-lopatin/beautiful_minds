@@ -19,7 +19,6 @@ class QuestionController extends BaseController
         $catNames[0] = 'Без категории';
 
 
-        testAnswers
         foreach ($this->viewVars['categories'] as $c) {
             $catNames[ $c->id ] = $c->name;
         }
