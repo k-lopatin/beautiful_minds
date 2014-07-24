@@ -25,7 +25,7 @@ class QuestionTestController extends BaseController
 
     public function add()
     {
-
+        $model = $this->model;
         if (Input::has('statement')) {
             $q = new QuestionTest;
             $count=0;
@@ -44,19 +44,21 @@ class QuestionTestController extends BaseController
                     Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
                     $this->getFilesByInput(), $this->getTestsByInput())
                     ) {
-
+                    $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
+                    $this->getTestAnswers();
                     $this->viewVars['message'] = 'Вопрос успешно добавлен!';
                 } else {
                     $this->setViewVarsByInput();
                 }
             }
         }
-        $this->viewVars['questions'] = QuestionTest::orderBy('id', 'desc')->take(10)->get();
+
         return View::make('admin.questions.addQuestionTests', $this->viewVars);
     }
 
     public function edit($id)
     {
+        $model = $this->model;
         if ( !is_numeric($id) ) {
             return 'error';
         }
@@ -78,6 +80,8 @@ class QuestionTestController extends BaseController
                     Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
                     $this->getFilesByInput($q), $this->getTestsByInput())
                 ) {
+                    $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
+                    $this->getTestAnswers();
                     $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
                 } else {
                     $this->setViewVarsByInput();
@@ -86,12 +90,13 @@ class QuestionTestController extends BaseController
         }
         $this->setViewVarsByQ($q);
 
-        $this->viewVars['questions'] = QuestionTest::orderBy('id', 'desc')->take(10)->get();
+
         return View::make('admin.questions.editQuestionTests', $this->viewVars);
     }
 
     public function delete($id)
     {
+        $model = $this->model;
         if ( !is_numeric($id) ) {
             return 'error';
         }
@@ -103,17 +108,17 @@ class QuestionTestController extends BaseController
         if (Input::has('is') && Input::get('is') == 1) {
             if ( $q->delete() ) {
                 $this->viewVars['message'] = 'Вопрос успешно удален!';
-                $this->viewVars['questions'] = QuestionTest::all();
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
                 return View::make('admin.questions.addQuestionTests', $this->viewVars);
 
             } else {
                 $this->viewVars['message'] = 'УУУпс. Ошибонька.';
-                $this->viewVars['questions'] = QuestionTest::all();
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
                 return View::make('admin.questions.addQuestionTests',$this->viewVars);
             }
         }
 
-        $this->viewVars['questions'] = QuestionTest::orderBy('id', 'desc')->take(10)->get();
+        $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.delQuestionTests', $this->viewVars);
     }
 

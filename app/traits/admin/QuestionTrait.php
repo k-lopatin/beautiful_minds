@@ -26,14 +26,19 @@ trait QuestionTrait
         $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
         if($model == 'QuestionTest')
         {
-            $testAnswers = [];
-            foreach ($this->viewVars['questions'] as $q) {
-                $tmp = json_decode($q->tests, true);
-                $testAnswers[ $q->id ] = $tmp[1];
-            }
-            $this->viewVars['testAnswers'] = $testAnswers;
+            $this->getTestAnswers();
         }
 	}
+
+    function getTestAnswers()
+    {
+        $testAnswers = [];
+        foreach ($this->viewVars['questions'] as $q) {
+            $tmp = json_decode($q->tests, true);
+            $testAnswers[ $q->id ] = $tmp[1];
+        }
+        $this->viewVars['testAnswers'] = $testAnswers;
+    }
 
 	function setViewVarsByInput()
     {
