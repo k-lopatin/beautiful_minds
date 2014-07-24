@@ -2,33 +2,20 @@
 
 class QuestionNumberController extends BaseController
 {
+    use QuestionTrait;
+
     private $viewVars = [];
     private $filesList = [];
+
+    private $model = 'QuestionNumber';
 
     function __construct()
     {
         if( !UserLibrary::loginAdmin() ){
             exit();
         }
-        $this->viewVars['message'] = '';
-        $this->viewVars['title'] = 'Вопросы';
-        $this->viewVars['statement'] = '';
-        $this->viewVars['answer'] = '';
-        $this->viewVars['complexity'] = 0;
-        $this->viewVars['plustime'] = 0;
-        $this->viewVars['description'] = '';
-        $this->viewVars['link'] = '';
-
-        $this->viewVars['categories'] = Category::all();
+        $this->setViewVarsStandart();
         $this->viewVars['typeTitle'] = 'числа';
-
-        //Files inputs
-
-        for ($i = 1; $i <= 5; $i++) {
-            $this->filesList['file' . $i] = '';
-        }
-
-        $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
     }
 
     public function add()
@@ -47,7 +34,6 @@ class QuestionNumberController extends BaseController
             }
         }
 
-        $this->viewVars['questions'] = QuestionNumber::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.addQuestionNumbers', $this->viewVars);
     }
 
@@ -73,7 +59,6 @@ class QuestionNumberController extends BaseController
 
         $this->setViewVarsByQ($q);
 
-        $this->viewVars['questions'] = QuestionNumber::orderBy('id', 'desc')->take(10)->get();
         return View::make('admin.questions.editQuestionNumbers', $this->viewVars);
     }
 
@@ -90,21 +75,18 @@ class QuestionNumberController extends BaseController
         if (Input::has('is') && Input::get('is') == 1) {
             if ($q->delete()) {
                 $this->viewVars['message'] = 'Вопрос успешно удален!';
-                $this->viewVars['questions'] = QuestionNumber::all();
                 return View::make('admin.questions.addQuestionNumbers', $this->viewVars);
 
             } else {
                 $this->viewVars['message'] = 'УУУпс. Ошибонька.';
-                $this->viewVars['questions'] = QuestionNumber::all();
                 return View::make('admin.questions.addQuestionNumbers', $this->viewVars);
             }
         }
 
-        $this->viewVars['questions'] = QuestionNumber::all();
         return View::make('admin.questions.delQuestionNumbers', $this->viewVars);
     }
 
-    public function showFromCat($id)
+    /*public function showFromCat($id)
     {
         if (!is_numeric($id)) {
             return 'error';
@@ -121,7 +103,7 @@ class QuestionNumberController extends BaseController
 
         $this->viewVars['questions'] = $q;
         return View::make('admin.questions.list', $this->viewVars);
-    }
+    }*/
 
 
 
@@ -132,76 +114,5 @@ class QuestionNumberController extends BaseController
     --------------------------------------------------*/
 
 
-    function setViewVarsByInput()
-    {
-        $this->viewVars['message'] = 'Корректно заполните все поля!';
-        $this->viewVars['statement'] = Input::get('statement');
-        $this->viewVars['answer'] = Input::get('answer');
-        $this->viewVars['complexity'] = Input::get('complexity');
-        $this->viewVars['category'] = Input::get('category');
-        $this->viewVars['plustime'] = Input::get('plustime');
-        $this->viewVars['description'] = Input::get('description');
-        $this->viewVars['link'] = Input::get('link');
 
-        //Files inputs
-
-        for ($i = 1; $i <= 5; $i++) {
-            $this->filesList['file' . $i] = Input::get('file' . $i);
-        }
-
-        $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
-    }
-
-    function setViewVarsByQ($q)
-    {
-        $this->viewVars['statement'] = $q->statement;
-        $this->viewVars['answer'] = $q->answer;
-        $this->viewVars['complexity'] = $q->complexity;
-        $this->viewVars['plustime'] = $q->plustime;
-        $this->viewVars['category'] = $q->category;
-        $this->viewVars['description'] = $q->description;
-        $this->viewVars['id'] = $q->id;
-        $this->viewVars['link'] = $q->link;
-
-        $this->setFilesByQ($q);
-    }
-
-    function getFilesByInput($q = NULL)
-    {
-        $i = 1;
-        if ($q === NULL) {
-            $files = [];
-        } else {
-            $files = json_decode($q->files, true);
-        }
-
-        echo Input::hasFile('file1');
-        while ($i <= 5) {
-            if (Input::hasFile('file' . $i)) {
-                $filename = time() . $i . 'jpg';
-                $upload_success = Input::file('file' . $i)->move(public_path() . "/game_img/", $filename);
-                if ($upload_success) {
-                    $files[$i] = '/game_img/' . $filename;
-                } else {
-                    echo Input::file('file' . $i)->getRealPath();
-                }
-                //$files[$i] = '/game_img/'.$filename;
-            }
-            $i++;
-        }
-        return json_encode($files);
-    }
-
-    function setFilesByQ($q)
-    {
-        if ($q->files != '') {
-            $files = json_decode($q->files);
-            if($files !== NULL) {
-                foreach ($files as $i => $f) {
-                    $this->filesList['file' . $i] = $f;
-                }
-            }
-            $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
-        }
-    }
 }
