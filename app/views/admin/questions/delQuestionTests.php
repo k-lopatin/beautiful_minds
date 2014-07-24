@@ -28,7 +28,7 @@
                 foreach ($questions as $q) {
                     echo '<tr>';
                     echo '<td><a href="/admin/q_tests/' . $q->id . '"> ' . $q->statement . ' </a></td>';
-                    echo '<td>Ответ: ' . $q->answer . ' </td>';
+                    echo '<td>Ответ: ' . $testAnswers[ $q->id ] . ' </td>';
                     echo '</tr>';
                 }
                 ?>

@@ -17,6 +17,8 @@ class QuestionController extends BaseController
         $this->viewVars['categories'] = Category::all();
 
         $catNames[0] = 'Без категории';
+
+
         foreach ($this->viewVars['categories'] as $c) {
             $catNames[ $c->id ] = $c->name;
         }

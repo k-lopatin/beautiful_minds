@@ -24,7 +24,21 @@ trait QuestionTrait
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         $model = $this->model;
         $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
+        if($model == 'QuestionTest')
+        {
+            $this->getTestAnswers();
+        }
 	}
+
+    function getTestAnswers()
+    {
+        $testAnswers = [];
+        foreach ($this->viewVars['questions'] as $q) {
+            $tmp = json_decode($q->tests, true);
+            $testAnswers[ $q->id ] = $tmp[1];
+        }
+        $this->viewVars['testAnswers'] = $testAnswers;
+    }
 
 	function setViewVarsByInput()
     {

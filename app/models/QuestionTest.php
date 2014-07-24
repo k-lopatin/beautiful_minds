@@ -6,11 +6,8 @@ class QuestionTest extends Eloquent
     protected $table = 'q_tests';
     public $timestamps = false; //delete updated_at and created_at properties
 
-    public function add($statement, $answer, $complexity, $category, $plustime, $description, $link, $files, $tests){
+    public function add($statement, $complexity, $category, $plustime, $description, $link, $files, $tests){
         if($statement == '' || strlen( $statement ) < 5){
-            return 0;
-        }
-        if($answer == '' || !is_string($answer)){
             return 0;
         }
         if($complexity == '' || !is_numeric($complexity) || $complexity < 0 || $complexity > 10 ){
@@ -23,7 +20,6 @@ class QuestionTest extends Eloquent
             return 0;
         }
         $this->statement = $statement;
-        $this->answer = $answer;
         $this->complexity = $complexity;
         $this->category = $category;
         $this->plustime = $plustime;
@@ -34,11 +30,8 @@ class QuestionTest extends Eloquent
         $this->save();
         return 1;
     }
-    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link, $files, $tests){
+    public function edit($statement, $complexity, $category, $plustime, $description, $link, $files, $tests){
         if($statement == '' || strlen( $statement ) < 5){
-            return 0;
-        }
-        if($answer == '' || !is_string($answer)){
             return 0;
         }
         if($complexity == '' || !is_numeric($complexity) || $complexity < 0 || $complexity > 10 ){
@@ -51,7 +44,6 @@ class QuestionTest extends Eloquent
             return 0;
         }
         $this->statement = $statement;
-        $this->answer = $answer;
         $this->complexity = $complexity;
         $this->category = $category;
         $this->plustime = $plustime;
