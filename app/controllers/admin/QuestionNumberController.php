@@ -20,6 +20,7 @@ class QuestionNumberController extends BaseController
 
     public function add()
     {
+        $model = $this->model;
 
         if (Input::has('statement')) {
             $q = new QuestionNumber;
@@ -40,6 +41,7 @@ class QuestionNumberController extends BaseController
 
     public function edit($id)
     {
+        $model = $this->model;
         if (!is_numeric($id)) {
             return 'error';
         }
@@ -72,7 +74,7 @@ class QuestionNumberController extends BaseController
         $this->viewVars['statement'] = $q->statement;
         $this->viewVars['id'] = $q->id;
 
-
+        $model = $this->model;
         if (Input::has('is') && Input::get('is') == 1) {
             if ($q->delete()) {
                 $this->viewVars['message'] = 'Вопрос успешно удален!';

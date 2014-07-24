@@ -29,6 +29,7 @@ class QuestionWordController extends BaseController
                 ) {
 
                 $this->viewVars['message'] = 'Вопрос успешно добавлен!';
+                $model = $this->model;
                 $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
             } else {
                 $this->setViewVarsByInput();
@@ -52,6 +53,7 @@ class QuestionWordController extends BaseController
                 $this->getFilesByInput($q))
             ) {
                 $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
+                $model = $this->model;
                 $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
             } else {
                 $this->setViewVarsByInput();
@@ -73,7 +75,7 @@ class QuestionWordController extends BaseController
         $this->viewVars['statement'] = $q->statement;
         $this->viewVars['id'] = $q->id;
 
-
+        $model = $this->model;
         if (Input::has('is') && Input::get('is') == 1) {
             if ( $q->delete() ) {
                 $this->viewVars['message'] = 'Вопрос успешно удален!';
