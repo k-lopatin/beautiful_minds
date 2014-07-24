@@ -29,6 +29,7 @@ class QuestionWordController extends BaseController
                 ) {
 
                 $this->viewVars['message'] = 'Вопрос успешно добавлен!';
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
             } else {
                 $this->setViewVarsByInput();
             }
@@ -50,8 +51,8 @@ class QuestionWordController extends BaseController
                 Input::get('category'), Input::get('plustime'), Input::get('description'), Input::get('link'),
                 $this->getFilesByInput($q))
             ) {
-
                 $this->viewVars['message'] = 'Вопрос успешно отредактирован!';
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
             } else {
                 $this->setViewVarsByInput();
             }
@@ -76,12 +77,12 @@ class QuestionWordController extends BaseController
         if (Input::has('is') && Input::get('is') == 1) {
             if ( $q->delete() ) {
                 $this->viewVars['message'] = 'Вопрос успешно удален!';
-                $this->viewVars['questions'] = QuestionWord::all();
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
                 return View::make('admin.questions.addQuestionWords', $this->viewVars);
 
             } else {
                 $this->viewVars['message'] = 'УУУпс. Ошибонька.';
-                $this->viewVars['questions'] = QuestionWord::all();
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
                 return View::make('admin.questions.addQuestionWords',$this->viewVars);
             }
         }
@@ -90,7 +91,7 @@ class QuestionWordController extends BaseController
         return View::make('admin.questions.delQuestionWords', $this->viewVars);
     }
 
-    public function showFromCat($id)
+    /*public function showFromCat($id)
     {
         if ( !is_numeric($id) ) {
             return 'error';
@@ -107,7 +108,7 @@ class QuestionWordController extends BaseController
 
         $this->viewVars['questions'] = $q;
         return View::make('admin.questions.list', $this->viewVars);
-    }
+    }*/
 
     /*-------------------------------------------------
         HELPER FUNCTIONS

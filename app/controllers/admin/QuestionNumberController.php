@@ -29,6 +29,7 @@ class QuestionNumberController extends BaseController
             ) {
 
                 $this->viewVars['message'] = 'Вопрос успешно добавлен!';
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
             } else {
                 $this->setViewVarsByInput();
             }
@@ -75,6 +76,7 @@ class QuestionNumberController extends BaseController
         if (Input::has('is') && Input::get('is') == 1) {
             if ($q->delete()) {
                 $this->viewVars['message'] = 'Вопрос успешно удален!';
+                $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
                 return View::make('admin.questions.addQuestionNumbers', $this->viewVars);
 
             } else {
