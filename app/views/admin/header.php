@@ -20,6 +20,7 @@
             <li><a href="/admin/q_numbers">Вопросы (числа)</a></li>
             <li><a href="/admin/q_words">Вопросы (слова)</a></li>
             <li><a href="/admin/q_tests">Вопросы (тесты)</a></li>
+            <li><a href="/admin/q_tests">Вопросы (порядок)</a></li>
         </ul>
 
         <!-- Right Nav Section -->
