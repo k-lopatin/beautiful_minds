@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/assets/admin/css/foundation.css"/>
     <link rel="stylesheet" href="/assets/admin/css/style.css"/>
     <script src="/assets/admin/js/vendor/modernizr.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title><?= $title ?></title>
 
 </head>
@@ -21,6 +22,7 @@
             <li><a href="/admin/q_words">Вопросы (слова)</a></li>
             <li><a href="/admin/q_tests">Вопросы (тесты)</a></li>
             <li><a href="/admin/q_tests">Вопросы (порядок)</a></li>
+            <li><a href="/admin/q_maps">Вопросы (карты)</a></li>
         </ul>
 
         <!-- Right Nav Section -->
