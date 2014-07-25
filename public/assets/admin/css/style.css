@@ -8,3 +8,26 @@
 table tr:nth-of-type(even) {
 	background: #f2f2f2;
 }
+
+
+/*------------------------------------------------
+ MAP STYLES
+ -------------------------------------------------*/
+ #map {
+ 	margin: 10px auto;
+ 	position: relative;
+ }
+ #map .circle {
+ 	display: none;
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ }
+.map_little {
+	height: 120px;
+	margin: 3px 0 5px 0;
+}
+
+/*------------------------------------------------
+ END OF MAP STYLES
+ -------------------------------------------------*/

@@ -21,10 +21,12 @@ Route::any('admin/logout', function(){
 });
 
 Route::get('/', 'HomeController@showWelcome');
-Route::get('admin/categories', 'CategoriesController@addCat');
-Route::post('admin/categories', 'CategoriesController@addCat');
-Route::get('admin/categories/{id}', 'CategoriesController@editCat');
-Route::post('admin/categories/{id}', 'CategoriesController@editCat');
+
+/**
+ * Categories of Questions
+*/
+Route::any('admin/categories', 'CategoriesController@addCat');
+Route::any('admin/categories/{id}', 'CategoriesController@editCat');
 Route::any('admin/categories/del/{id}', 'CategoriesController@delCat');
 
 /**
@@ -34,26 +36,31 @@ Route::any('admin/', 'QuestionNumberController@add');
 Route::any('admin/q_numbers', 'QuestionNumberController@add');
 Route::any('admin/q_numbers/{id}', 'QuestionNumberController@edit');
 Route::any('admin/q_numbers/del/{id}', 'QuestionNumberController@delete');
-Route::any('admin/q_numbers/cat/{id}', 'QuestionNumberController@showFromCat');
+
 /**
  * Question with word answers
  */
-Route::any('admin/', 'QuestionWordController@add');
 Route::any('admin/q_words', 'QuestionWordController@add');
 Route::any('admin/q_words/{id}', 'QuestionWordController@edit');
 Route::any('admin/q_words/del/{id}', 'QuestionWordController@delete');
-Route::any('admin/q_words/cat/{id}', 'QuestionWordController@showFromCat');
+
 /**
  * Question with test answers
 */
-
-Route::any('admin/', 'QuestionTestController@add');
 Route::any('admin/q_tests', 'QuestionTestController@add');
 Route::any('admin/q_tests/{id}', 'QuestionTestController@edit');
 Route::any('admin/q_tests/del/{id}', 'QuestionTestController@delete');
-Route::any('admin/q_tests/cat/{id}', 'QuestionTestController@showFromCat');
 
+/**
+ * Question with answers on map
+*/
+Route::any('admin/q_maps', 'QuestionMapController@add');
+Route::any('admin/q_maps/{id}', 'QuestionMapController@edit');
+Route::any('admin/q_maps/del/{id}', 'QuestionMapController@delete');
 
+/**
+ * Question List
+*/
 Route::any('admin/qlist', 'QuestionController@showList');
 
 /**

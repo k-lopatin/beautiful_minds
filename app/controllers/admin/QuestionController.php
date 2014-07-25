@@ -71,6 +71,12 @@ class QuestionController extends BaseController
                 $this->viewVars['linkType'] = 'test';
                 $this->viewVars['linkToQ'] = 'q_tests';
                 break;
+            case 'map':
+                $questions = QuestionMap::orderBy('id', 'desc');
+                $this->viewVars['typeTitle'] = 'Карты';
+                $this->viewVars['linkType'] = 'map';
+                $this->viewVars['linkToQ'] = 'q_maps';
+                break;
             default:
                 return 'error';
         }

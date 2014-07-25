@@ -8,10 +8,12 @@ trait QuestionTrait
         $this->viewVars['title'] = 'Вопросы';
         $this->viewVars['statement'] = '';
         $this->viewVars['answer'] = '';
+        $this->viewVars['error'] = '10';
         $this->viewVars['complexity'] = 0;
         $this->viewVars['plustime'] = 0;
         $this->viewVars['description'] = '';
         $this->viewVars['link'] = '';
+        $this->viewVars['map'] = '';
 
         $this->viewVars['categories'] = Category::all();
 
@@ -71,6 +73,11 @@ trait QuestionTrait
         $this->viewVars['id'] = $q->id;
         $this->viewVars['link'] = $q->link;
 
+        if($this->model == 'QuestionMap'){
+            $this->viewVars['map'] = $q->map;
+            $this->viewVars['error'] = $q->error;
+        }
+
         $this->setFilesByQ($q);
     }
 
@@ -111,6 +118,16 @@ trait QuestionTrait
             }
             $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         }
+    }
+
+    function getMapImgs()
+    {
+        $files = File::files(public_path() . '/map_img');
+        foreach($files as $i => $f){
+            $t = str_replace(public_path(), '', $f);
+            $files[ $i ] = $t;
+        }
+        return $files;
     }
 }
 
