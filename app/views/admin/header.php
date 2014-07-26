@@ -21,7 +21,7 @@
             <li><a href="/admin/q_numbers">Вопросы (числа)</a></li>
             <li><a href="/admin/q_words">Вопросы (слова)</a></li>
             <li><a href="/admin/q_tests">Вопросы (тесты)</a></li>
-            <li><a href="/admin/q_tests">Вопросы (порядок)</a></li>
+            <li><a href="/admin/q_order">Вопросы (порядок)</a></li>
             <li><a href="/admin/q_maps">Вопросы (карты)</a></li>
         </ul>
 

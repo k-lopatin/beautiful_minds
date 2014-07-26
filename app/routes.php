@@ -52,6 +52,13 @@ Route::any('admin/q_tests/{id}', 'QuestionTestController@edit');
 Route::any('admin/q_tests/del/{id}', 'QuestionTestController@delete');
 
 /**
+ * Question with answers to order
+*/
+Route::any('admin/q_order', 'QuestionOrderController@add');
+Route::any('admin/q_order/{id}', 'QuestionOrderController@edit');
+Route::any('admin/q_order/del/{id}', 'QuestionOrderController@delete');
+
+/**
  * Question with answers on map
 */
 Route::any('admin/q_maps', 'QuestionMapController@add');

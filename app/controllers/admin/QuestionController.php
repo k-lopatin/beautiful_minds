@@ -33,6 +33,7 @@ class QuestionController extends BaseController
 
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         $this->viewVars['testsView'] = View::make('admin.questions.testsAnswersUpload', $this->testsList);
+        $this->viewVars['orderView'] = View::make('admin.questions.orderAnswersUpload', $this->testsList);
 
         $this->viewVars['linkType'] = '';
         $this->viewVars['linkCategory'] = '';
@@ -70,6 +71,12 @@ class QuestionController extends BaseController
                 $this->viewVars['typeTitle'] = 'Тесты';
                 $this->viewVars['linkType'] = 'test';
                 $this->viewVars['linkToQ'] = 'q_tests';
+                break;
+            case 'order':
+                $questions = QuestionOrder::orderBy('id', 'desc');
+                $this->viewVars['typeTitle'] = 'Порядок';
+                $this->viewVars['linkType'] = 'order';
+                $this->viewVars['linkToQ'] = 'q_order';
                 break;
             case 'map':
                 $questions = QuestionMap::orderBy('id', 'desc');
