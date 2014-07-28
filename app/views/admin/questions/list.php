@@ -18,7 +18,12 @@
             foreach ($questions as $q) {
                 echo '<tr>';
                 echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->statement . ' </a></td>';
-                echo '<td>' . $q->answer . ' </td>';
+                if( isset($q->answer) ){
+                    echo '<td>' . $q->answer . ' </td>';    
+                } else {
+                    $tests = json_decode( $q->tests, true ); 
+                    echo '<td>'. $tests[1] . '</td>';
+                }                
                 echo '<td>' . $q->complexity . ' </td>';
                 echo '<td>' . $catNamesById[ $q->category ] . ' </td>';
                 echo '</tr>';
