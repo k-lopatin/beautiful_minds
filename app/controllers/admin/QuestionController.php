@@ -40,6 +40,8 @@ class QuestionController extends BaseController
         $this->viewVars['linkComplexity'] = '';
         $this->viewVars['linkPage'] = '';
 
+        $this->viewVars['search'] = '';
+
         $this->viewVars['count'] = 0;
 
         $this->q_per_page = 15;
@@ -95,7 +97,6 @@ class QuestionController extends BaseController
         $this->viewVars['count'] = $questions->count();
 
 
-
         if( Input::has('complexity') && Input::get('complexity') > 0 && Input::get('complexity') <=10 ){
             //$questions = $questions->where( 'complexity', '=', Input::get('complexity') );
             $where = 'complexity = '.Input::get('complexity');
@@ -108,6 +109,19 @@ class QuestionController extends BaseController
             if($isSort) $where .= ' AND ';
             $where .= 'category = '.Input::get('category');
             $this->viewVars['linkCategory'] = Input::get('category');
+            $isSort = true;
+        }
+
+        if( Input::has('s') && Input::get('s') != '' ){
+            if($isSort) $where .= ' AND ';
+            if($model == 'QuestionTest' || $model == 'QuestionOrder'){
+                $where .= 'statement LIKE "%'.Input::get('s').'%" OR tests LIKE "%'.Input::get('s').'%"';
+            } elseif ($model == 'QuestionMap') {
+                $where .= 'statement LIKE "%'.Input::get('s').'%"';
+            } else {
+                $where .= 'statement LIKE "%'.Input::get('s').'%" OR answer LIKE "%'.Input::get('s').'%"';
+            }
+            $this->viewVars['search'] = Input::get('s');
             $isSort = true;
         }
 
