@@ -26,7 +26,7 @@ trait QuestionTrait
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         $model = $this->model;
         $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
-        if($model == 'QuestionTest')
+        if($model == 'QuestionTest' || $model == 'QuestionOrder')
         {
             $this->getTestAnswers();
         }

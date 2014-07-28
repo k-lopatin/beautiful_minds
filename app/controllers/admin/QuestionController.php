@@ -33,6 +33,7 @@ class QuestionController extends BaseController
 
         $this->viewVars['filesView'] = View::make('admin.questions.filesUpload', $this->filesList);
         $this->viewVars['testsView'] = View::make('admin.questions.testsAnswersUpload', $this->testsList);
+        $this->viewVars['orderView'] = View::make('admin.questions.orderAnswersUpload', $this->testsList);
 
         $this->viewVars['linkType'] = '';
         $this->viewVars['linkCategory'] = '';
@@ -54,25 +55,31 @@ class QuestionController extends BaseController
 
         switch( Input::get('type') ){
             case 'number':
-                $questions = QuestionNumber::orderBy('id', 'desc');
+                $model = 'QuestionNumber';                
                 $this->viewVars['typeTitle'] = 'Числа';
                 $this->viewVars['linkType'] = 'number';
                 $this->viewVars['linkToQ'] = 'q_numbers';
                 break;
             case 'word':
-                $questions = QuestionWord::orderBy('id', 'desc');
+                $model = 'QuestionWord';
                 $this->viewVars['typeTitle'] = 'Слова';
                 $this->viewVars['linkType'] = 'word';
                 $this->viewVars['linkToQ'] = 'q_words';
                 break;
             case 'test':
-                $questions = QuestionTest::orderBy('id', 'desc');
+                $model = 'QuestionTest';
                 $this->viewVars['typeTitle'] = 'Тесты';
                 $this->viewVars['linkType'] = 'test';
                 $this->viewVars['linkToQ'] = 'q_tests';
                 break;
+            case 'order':
+                $model = 'QuestionOrder';
+                $this->viewVars['typeTitle'] = 'Порядок';
+                $this->viewVars['linkType'] = 'order';
+                $this->viewVars['linkToQ'] = 'q_order';
+                break;
             case 'map':
-                $questions = QuestionMap::orderBy('id', 'desc');
+                $model = 'QuestionMap';
                 $this->viewVars['typeTitle'] = 'Карты';
                 $this->viewVars['linkType'] = 'map';
                 $this->viewVars['linkToQ'] = 'q_maps';
@@ -80,9 +87,14 @@ class QuestionController extends BaseController
             default:
                 return 'error';
         }
+
+        $questions = $model::orderBy('id', 'desc');
+
         $isSort = false;
         $where = '';
         $this->viewVars['count'] = $questions->count();
+
+
 
         if( Input::has('complexity') && Input::get('complexity') > 0 && Input::get('complexity') <=10 ){
             //$questions = $questions->where( 'complexity', '=', Input::get('complexity') );
