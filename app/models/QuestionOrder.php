@@ -2,7 +2,8 @@
 
 class QuestionOrder extends Eloquent
 {
-
+    use QuestionModelTrait;
+    
     protected $table = 'q_order';
     public $timestamps = false; //delete updated_at and created_at properties
 

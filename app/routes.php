@@ -71,5 +71,10 @@ Route::any('admin/q_maps/del/{id}', 'QuestionMapController@delete');
 Route::any('admin/qlist', 'QuestionController@showList');
 
 /**
+ * Additional function
+*/
+Route::any('admin/additional', 'AdditionalController@showAdditional');
+
+/**
 * END ROUTES
 */

@@ -1,7 +1,7 @@
 <?= View::make('admin.header', array('title' => $title)) ?>
 <div class="row">
     <div class="large-12 columns">
-        <h3>Вопросы на <?=$typeTitle?> (<b> <?=$count?> </b>)</h3>
+        <h4>Вопросы на <?=$typeTitle?> (<b> <?=$count?> </b>) | <a href="/admin/<?=$linkToQ?>">Добавить новый</a></h4>
     </div>
 </div>
 <br />

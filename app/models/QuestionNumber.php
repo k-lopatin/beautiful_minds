@@ -2,7 +2,8 @@
 
 class QuestionNumber extends Eloquent
 {
-
+    use QuestionModelTrait;
+    
     protected $table = 'q_numbers';
     public $timestamps = false; //delete updated_at and created_at properties
 

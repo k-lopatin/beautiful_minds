@@ -2,7 +2,8 @@
 
 class QuestionTest extends Eloquent
 {
-
+    use QuestionModelTrait;
+    
     protected $table = 'q_tests';
     public $timestamps = false; //delete updated_at and created_at properties
 

@@ -2,7 +2,8 @@
 
 class QuestionWord extends Eloquent
 {
-
+    use QuestionModelTrait;
+    
     protected $table = 'q_words';
     public $timestamps = false; //delete updated_at and created_at properties
 

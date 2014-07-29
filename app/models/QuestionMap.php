@@ -2,7 +2,8 @@
 
 class QuestionMap extends Eloquent
 {
-
+    use QuestionModelTrait;
+    
     protected $table = 'q_maps';
     public $timestamps = false; //delete updated_at and created_at properties
 
