@@ -11,6 +11,7 @@
 			"app/commands",
 			"app/controllers",
                         "app/controllers/admin",
+                        "app/controllers/game",
 			"app/models",
 			"app/libraries",
 			"app/traits",
