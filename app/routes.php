@@ -75,6 +75,22 @@ Route::any('admin/qlist', 'QuestionController@showList');
 */
 Route::any('admin/additional', 'AdditionalController@showAdditional');
 
+
+
+
+
+
+
+
+
+
+
+/**
+ *---------- GAME ROUTES ------------
+*/
+
+Route::any('random/{model}', 'RandomQuestionController@showRandom');
+
 /**
 * END ROUTES
 */
