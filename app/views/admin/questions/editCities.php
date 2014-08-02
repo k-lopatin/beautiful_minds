@@ -3,7 +3,7 @@
 <?= Form::token() ?>
     <div class="row">
         <div class="large-12 columns">
-            <h4>Редактировать вопрос | <a href="/admin/qlist?type=city">Все вопросы на слова</a></h4>
+            <h4>Редактировать город | <a href="/admin/qlist?type=city">Все города</a></h4>
         </div>
     </div>
     <div class="row">

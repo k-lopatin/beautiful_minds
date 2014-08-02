@@ -3,7 +3,7 @@
 <?= Form::token() ?>
     <div class="row">
         <div class="large-12 columns">
-            <h4>Удалить вопрос | <a href="/admin/qlist?type=city">Все вопросы на слова</a></h4>
+            <h4>Удалить город | <a href="/admin/qlist?type=city">Все города</a></h4>
         </div>
     </div>
     <div class="row">
@@ -22,7 +22,7 @@
 <?= Form::close() ?>
     <div class="row">
         <div class="large-12 columns">
-            <h5>Последние вопросы: | <a href="/admin/qlist?type=city">Все вопросы</a></h5>
+            <h5>Последние города: | <a href="/admin/qlist?type=city">Все города</a></h5>
             <table>
                 <?php
                     foreach ($questions as $q) {
