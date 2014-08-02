@@ -25,7 +25,7 @@
            <?= Form::label('description', 'Описание') ?>
            <?= Form::text('description', $description) ?>
 
-           <?= Form::submit('Добавить', array('class' => 'button')) ?>
+           <?= Form::submit('Сохранить', array('class' => 'button')) ?>
             <a href="/admin/cities" class="button secondary">Добавить новый город</a>
             <a href="/admin/cities/del/<?=$id?>" class="button alert">Удалить</a>
         </div>
@@ -39,8 +39,8 @@
                 <?php
                     foreach ($questions as $q) {
                         echo '<tr>';
-                        echo '<td>Страна:<a href="/admin/cities/' . $q->id . '"> ' . $q->country . ' </a></td>';
-                        echo '<td>Город:' . $q->name . ' </td>';
+                        echo '<td>Страна:' . $q->country . ' </td>';
+                        echo '<td>Город:<a href="/admin/cities/' . $q->id . '"> ' . $q->name . ' </a></td>';
                         echo '</tr>';
                     }
                 ?>
