@@ -16,25 +16,47 @@
         <?= Form::close() ?>
         <table>
             <thead>
-                <th>Описание</th>
-                <th>Ответ</th>
-                <th>Сложность</th>
-                <th>Категория</th>
+            <?php
+                if($typeTitle =="Города")
+                {
+                    echo'<th>Страна</th>';
+                    echo'<th>Город</th>';
+                }
+                else
+                {
+                    echo'<th>Описание</th>';
+                    echo'<th>Ответ</th>';
+                    echo'<th>Сложность</th>';
+                    echo'<th>Категория</th>';
+                }
+            ?>
             </thead>
             <?php
-            foreach ($questions as $q) {
-                echo '<tr>';
-                echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->statement . ' </a></td>';
-                if( isset($q->answer) ){
-                    echo '<td>' . $q->answer . ' </td>';    
-                } else {
-                    $tests = json_decode( $q->tests, true ); 
-                    echo '<td>'. $tests[1] . '</td>';
-                }                
-                echo '<td>' . $q->complexity . ' </td>';
-                echo '<td>' . $catNamesById[ $q->category ] . ' </td>';
-                echo '</tr>';
-            }
+                if($typeTitle !="Города")
+                {
+                    foreach ($questions as $q) {
+                        echo '<tr>';
+                        echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->statement . ' </a></td>';
+                        if( isset($q->answer) ){
+                            echo '<td>' . $q->answer . ' </td>';
+                        } else {
+                            $tests = json_decode( $q->tests, true );
+                            echo '<td>'. $tests[1] . '</td>';
+                        }
+                        echo '<td>' . $q->complexity . ' </td>';
+                        echo '<td>' . $catNamesById[ $q->category ] . ' </td>';
+                        echo '</tr>';
+                    }
+                }
+                else
+                {
+                    foreach ($questions as $q) {
+                        echo '<tr>';
+                        echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->country . ' </a></td>';
+                        echo '<td>' . $q->name . ' </td>';
+                        echo '</tr>';
+                    }
+                }
             ?>
         </table>
         Страницы:&nbsp;&nbsp;
