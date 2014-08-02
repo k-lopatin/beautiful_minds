@@ -73,39 +73,38 @@
         ?>
 
     </div>
-    <div class="large-4 columns">
-        <h6>Сложность</h6>
-        <a href="?type=<?=$linkType?>&category=<?=$linkCategory?>&complexity=&s=<?=$search?>">Любая</a>&nbsp;&nbsp;&nbsp;
-        <?php for ($i=1; $i <= 10; $i++) {
-            if( $i == $linkComplexity ) {
-                echo $i.'&nbsp;&nbsp;&nbsp;';
-            } else {
-                echo '<a href="?type='.$linkType.'&category='.$linkCategory.'&complexity='.$i.'&s='.$search.'">'.$i.'</a>&nbsp;&nbsp;&nbsp;';
-            }
-
-        }
-        ?>
-        <br /><br />
-        <h6>Просмотреть вопросы из категории:</h6>
-        <ul>
-            <li><a href="?type=<?=$linkType?>&category=&complexity=<?=$linkComplexity?>&s=<?=$search?>">Любая</a></li>
-            <?php
-            if(0 === $linkCategory){
-                echo '<li>Без категории</li>';
-            } else {
-                echo '<li><a href="?type='.$linkType.'&category=0&complexity='.$linkComplexity.'&s='.$search.'">Без категории</a></li>';
-            }
-            foreach ($categories as $c) {
-                if($c->id == $linkCategory){
-                    echo '<li> ' . $c->name . ' </li>';
+    <?php
+        if($typeTitle !="Города"){
+        echo'<div class="large-4 columns">';
+        echo'<h6>Сложность</h6>';
+            echo'<a href="?type=<?=$linkType?>&category=<?=$linkCategory?>&complexity=&s=<?=$search?>">Любая</a>&nbsp;&nbsp;&nbsp;';
+            for ($i=1; $i <= 10; $i++) {
+                if( $i == $linkComplexity ) {
+                    echo $i.'&nbsp;&nbsp;&nbsp;';
                 } else {
-                    echo '<li><a href="?type='.$linkType.'&category='.$c->id.'&complexity='.$linkComplexity.'&s='.$search.'"> ' . $c->name . ' </a></li>';
+                    echo '<a href="?type='.$linkType.'&category='.$linkCategory.'&complexity='.$i.'&s='.$search.'">'.$i.'</a>&nbsp;&nbsp;&nbsp;';
                 }
+
             }
-            ?>
-        </ul>
-
-
+            echo'<br /><br />';
+            echo'<h6>Просмотреть вопросы из категории:</h6>';
+            echo'<ul>';
+                echo'<li><a href="?type=<?=$linkType?>&category=&complexity=<?=$linkComplexity?>&s=<?=$search?>">Любая</a></li>';
+                if(0 === $linkCategory){
+                    echo '<li>Без категории</li>';
+                } else {
+                    echo '<li><a href="?type='.$linkType.'&category=0&complexity='.$linkComplexity.'&s='.$search.'">Без категории</a></li>';
+                }
+                foreach ($categories as $c) {
+                    if($c->id == $linkCategory){
+                        echo '<li> ' . $c->name . ' </li>';
+                    } else {
+                        echo '<li><a href="?type='.$linkType.'&category='.$c->id.'&complexity='.$linkComplexity.'&s='.$search.'"> ' . $c->name . ' </a></li>';
+                    }
+                }
+        }
+        echo'</ul>';
+    ?>
 
     </div>
 

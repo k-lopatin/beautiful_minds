@@ -14,7 +14,7 @@
     <div class="row">
         <div class="large-7 columns">
            <?= Form::label('name', 'Название') ?>
-           <?= Form::textarea('name', $name) ?>
+           <?= Form::text('name', $name) ?>
 
            <?= Form::label('country', 'Страна') ?>
            <?= Form::text('country', $country) ?>
@@ -39,8 +39,8 @@
                 <?php
                     foreach ($questions as $q) {
                         echo '<tr>';
-                        echo '<td>Страна:<a href="/admin/cities/' . $q->id . '"> ' . $q->country . ' </a></td>';
-                        echo '<td>Город:' . $q->name . ' </td>';
+                        echo '<td>Страна:' . $q->country . ' </td>';
+                        echo '<td>Город:<a href="/admin/cities/' . $q->id . '"> ' . $q->name . ' </a></td>';
                         echo '</tr>';
                     }
                 ?>
