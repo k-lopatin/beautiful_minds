@@ -39,5 +39,4 @@ class City extends Eloquent
         $this->save();
         return 1;
     }
-
 }
