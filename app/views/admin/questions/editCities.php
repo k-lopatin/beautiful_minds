@@ -23,7 +23,7 @@
            <?= Form::text('population', $population) ?>
 
            <?= Form::label('description', 'Описание') ?>
-           <?= Form::textarea('description', $description) ?>
+           <?= Form::text('description', $description) ?>
 
            <?= Form::submit('Добавить', array('class' => 'button')) ?>
             <a href="/admin/cities" class="button secondary">Добавить новый город</a>

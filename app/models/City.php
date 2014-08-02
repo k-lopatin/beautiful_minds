@@ -14,6 +14,9 @@ class City extends Eloquent
         if($country == '' || strlen( $country ) < 3 || !is_string($country)){
             return 0;
         }
+        if(!is_numeric($population)){
+            return 0;
+        }
         $this->name = $name;
         $this->country = $country;
         $this->population = $population;
@@ -28,6 +31,9 @@ class City extends Eloquent
             return 0;
         }
         if($country == '' || strlen( $country ) < 3 || !is_string($country)){
+            return 0;
+        }
+        if(!is_numeric($population)){
             return 0;
         }
         $this->name = $name;

@@ -36,7 +36,7 @@
         <?= Form::text('plustime', $plustime) ?>
 
         <?= Form::label('description', 'Объяснение:') ?>
-        <?= Form::textarea('description', $description) ?>
+        <?= Form::text('description', $description) ?>
 
         <?= Form::label('link', 'Ссылка на материал') ?>
         <?= Form::text('link', $link) ?>
