@@ -14,7 +14,7 @@
     <div class="row">
         <div class="large-7 columns">
            <?= Form::label('name', 'Название') ?>
-           <?= Form::textarea('name', $name) ?>
+           <?= Form::text('name', $name) ?>
 
            <?= Form::label('country', 'Страна') ?>
            <?= Form::text('country', $country) ?>
