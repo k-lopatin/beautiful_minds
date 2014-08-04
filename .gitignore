@@ -8,4 +8,5 @@ composer.lock
 Thumbs.db
 /nbproject/private/
 /phpmyadmin
+/public/game_img
 /.idea
