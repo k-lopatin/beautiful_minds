@@ -86,6 +86,12 @@ class QuestionController extends BaseController
                 $this->viewVars['linkType'] = 'map';
                 $this->viewVars['linkToQ'] = 'q_maps';
                 break;
+            case 'city':
+                $model = 'City';
+                $this->viewVars['typeTitle'] = 'Города';
+                $this->viewVars['linkType'] = 'city';
+                $this->viewVars['linkToQ'] = 'cities';
+                break;
             default:
                 return 'error';
         }

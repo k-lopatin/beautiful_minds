@@ -66,6 +66,13 @@ Route::any('admin/q_maps/{id}', 'QuestionMapController@edit');
 Route::any('admin/q_maps/del/{id}', 'QuestionMapController@delete');
 
 /**
+ * Cities
+*/
+Route::any('admin/cities', 'CitiesController@add');
+Route::any('admin/cities/{id}', 'CitiesController@edit');
+Route::any('admin/cities/del/{id}', 'CitiesController@delete');
+
+/**
  * Question List
 */
 Route::any('admin/qlist', 'QuestionController@showList');

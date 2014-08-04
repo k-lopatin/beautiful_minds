@@ -5,6 +5,10 @@ trait QuestionTrait
 	function setViewVarsStandart()
 	{
 		$this->viewVars['message'] = '';
+		$this->viewVars['name'] = '';
+		$this->viewVars['is_free'] = 0;
+		$this->viewVars['country'] = '';
+		$this->viewVars['population'] = '';
         $this->viewVars['title'] = 'Вопросы';
         $this->viewVars['statement'] = '';
         $this->viewVars['answer'] = '';
@@ -45,6 +49,10 @@ trait QuestionTrait
 	function setViewVarsByInput()
     {
         $this->viewVars['message'] = 'Корректно заполните все поля!';
+		$this->viewVars['name'] = Input::get('name');
+		$this->viewVars['is_free'] = 0;
+		$this->viewVars['country'] = Input::get('country');
+		$this->viewVars['population'] = Input::get('population');
         $this->viewVars['statement'] = Input::get('statement');
         $this->viewVars['answer'] = Input::get('answer');
         $this->viewVars['complexity'] = Input::get('complexity');
@@ -65,6 +73,10 @@ trait QuestionTrait
     function setViewVarsByQ($q)
     {
         $this->viewVars['statement'] = $q->statement;
+        $this->viewVars['is_free'] = $q->is_free;
+		$this->viewVars['name'] = $q->name;
+		$this->viewVars['country'] = $q->country;
+		$this->viewVars['population'] = $q->population;
         $this->viewVars['answer'] = $q->answer;
         $this->viewVars['complexity'] = $q->complexity;
         $this->viewVars['plustime'] = $q->plustime;
