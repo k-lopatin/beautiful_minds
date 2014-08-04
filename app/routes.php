@@ -97,6 +97,7 @@ Route::any('admin/additional', 'AdditionalController@showAdditional');
 */
 
 Route::any('random/{model}', 'RandomQuestionController@showRandom');
+Route::any('getgame/', 'RandomQuestionController@getGame');
 
 /**
 * END ROUTES
