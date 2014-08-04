@@ -12,6 +12,7 @@
 			"app/controllers",
                         "app/controllers/admin",
                         "app/controllers/game",
+                        "app/controllers/frontend",
 			"app/models",
 			"app/libraries",
 			"app/traits",

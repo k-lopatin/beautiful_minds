@@ -20,7 +20,6 @@ Route::any('admin/logout', function(){
 	return Redirect::to('admin');
 });
 
-Route::get('/', 'HomeController@showWelcome');
 
 /**
  * Categories of Questions
@@ -98,6 +97,9 @@ Route::any('admin/additional', 'AdditionalController@showAdditional');
 
 Route::any('random/{model}', 'RandomQuestionController@showRandom');
 Route::any('getgame/', 'RandomQuestionController@getGame');
+
+
+Route::any('/', 'IndexController@index');
 
 /**
 * END ROUTES
