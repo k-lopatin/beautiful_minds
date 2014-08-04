@@ -13,13 +13,13 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 
     <script type="text/javascript"
-    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAOTFFHfkbIVlNQzCf_Batc4V-WLTzH74c&sensor=TRUE">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOTFFHfkbIVlNQzCf_Batc4V-WLTzH74c&sensor=TRUE">
     </script>
     <script type="text/javascript" src="assets/frontend/js/google_maps.js"></script>
 
     <link rel="stylesheet" href="assets/frontend/css/main.css">
 </head>
-<body onload="initialize()">
+<body>
 
     <div id="map_canvas"></div>
 
