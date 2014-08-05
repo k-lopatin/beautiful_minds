@@ -13,6 +13,7 @@
 		<label><label><?= Form::checkbox('model[]', 'QuestionTest') ?> QuestionTest &nbsp;</label>
 		<label><?= Form::checkbox('model[]', 'QuestionOrder') ?> QuestionOrder &nbsp;</label>
 		<label><?= Form::checkbox('model[]', 'QuestionMap') ?> QuestionMap &nbsp; </label>
+		<label><?= Form::checkbox('model[]', 'City') ?> City &nbsp; </label>
 		<?= Form::submit( 'Обновить', array('class' => 'button alert') ) ?>
 		<?= Form::close() ?>
 	</div>
