@@ -17,45 +17,25 @@
         <table>
             <thead>
             <?php
-                if($typeTitle =="Города")
-                {
-                    echo'<th>Страна</th>';
-                    echo'<th>Город</th>';
-                }
-                else
-                {
                     echo'<th>Описание</th>';
                     echo'<th>Ответ</th>';
                     echo'<th>Сложность</th>';
                     echo'<th>Категория</th>';
-                }
             ?>
             </thead>
             <?php
-                if($typeTitle !="Города")
-                {
-                    foreach ($questions as $q) {
-                        echo '<tr>';
-                        echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->statement . ' </a></td>';
-                        if( isset($q->answer) ){
-                            echo '<td>' . $q->answer . ' </td>';
-                        } else {
-                            $tests = json_decode( $q->tests, true );
-                            echo '<td>'. $tests[1] . '</td>';
-                        }
-                        echo '<td>' . $q->complexity . ' </td>';
-                        echo '<td>' . $catNamesById[ $q->category ] . ' </td>';
-                        echo '</tr>';
+                foreach ($questions as $q) {
+                    echo '<tr>';
+                    echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->statement . ' </a></td>';
+                    if( isset($q->answer) ){
+                        echo '<td>' . $q->answer . ' </td>';
+                    } else {
+                        $tests = json_decode( $q->tests, true );
+                        echo '<td>'. $tests[1] . '</td>';
                     }
-                }
-                else
-                {
-                    foreach ($questions as $q) {
-                        echo '<tr>';
-                        echo '<td><a href="/admin/'.$linkToQ.'/' . $q->id . '"> ' . $q->country . ' </a></td>';
-                        echo '<td>' . $q->name . ' </td>';
-                        echo '</tr>';
-                    }
+                    echo '<td>' . $q->complexity . ' </td>';
+                    echo '<td>' . $catNamesById[ $q->category ] . ' </td>';
+                    echo '</tr>';
                 }
             ?>
         </table>
@@ -73,38 +53,39 @@
         ?>
 
     </div>
-    <?php
-        if($typeTitle !="Города"){
-        echo'<div class="large-4 columns">';
-        echo'<h6>Сложность</h6>';
-            echo'<a href="?type=<?=$linkType?>&category=<?=$linkCategory?>&complexity=&s=<?=$search?>">Любая</a>&nbsp;&nbsp;&nbsp;';
-            for ($i=1; $i <= 10; $i++) {
-                if( $i == $linkComplexity ) {
-                    echo $i.'&nbsp;&nbsp;&nbsp;';
-                } else {
-                    echo '<a href="?type='.$linkType.'&category='.$linkCategory.'&complexity='.$i.'&s='.$search.'">'.$i.'</a>&nbsp;&nbsp;&nbsp;';
-                }
 
-            }
-            echo'<br /><br />';
-            echo'<h6>Просмотреть вопросы из категории:</h6>';
-            echo'<ul>';
-                echo'<li><a href="?type=<?=$linkType?>&category=&complexity=<?=$linkComplexity?>&s=<?=$search?>">Любая</a></li>';
-                if(0 === $linkCategory){
-                    echo '<li>Без категории</li>';
-                } else {
-                    echo '<li><a href="?type='.$linkType.'&category=0&complexity='.$linkComplexity.'&s='.$search.'">Без категории</a></li>';
-                }
-                foreach ($categories as $c) {
-                    if($c->id == $linkCategory){
-                        echo '<li> ' . $c->name . ' </li>';
+    <div class="large-4 columns">
+        <h6>Сложность</h6>
+            <a href="?type=<?=$linkType?>&category=<?=$linkCategory?>&complexity=&s=<?=$search?>">Любая</a>&nbsp;&nbsp;&nbsp;
+            <?php
+                for ($i=1; $i <= 10; $i++) {
+                    if( $i == $linkComplexity ) {
+                        echo $i.'&nbsp;&nbsp;&nbsp;';
                     } else {
-                        echo '<li><a href="?type='.$linkType.'&category='.$c->id.'&complexity='.$linkComplexity.'&s='.$search.'"> ' . $c->name . ' </a></li>';
+                        echo '<a href="?type='.$linkType.'&category='.$linkCategory.'&complexity='.$i.'&s='.$search.'">'.$i.'</a>&nbsp;&nbsp;&nbsp;';
                     }
                 }
+            ?>
+            <br /><br />
+            <h6>Просмотреть вопросы из категории:</h6>
+            <ul>
+                <li><a href="?type=<?=$linkType?>&category=&complexity=<?=$linkComplexity?>&s=<?=$search?>">Любая</a></li>
+                <?php
+                    if(0 === $linkCategory){
+                        echo '<li>Без категории</li>';
+                    } else {
+                        echo '<li><a href="?type='.$linkType.'&category=0&complexity='.$linkComplexity.'&s='.$search.'">Без категории</a></li>';
+                    }
+                    foreach ($categories as $c) {
+                        if($c->id == $linkCategory){
+                            echo '<li> ' . $c->name . ' </li>';
+                        } else {
+                            echo '<li><a href="?type='.$linkType.'&category='.$c->id.'&complexity='.$linkComplexity.'&s='.$search.'"> ' . $c->name . ' </a></li>';
+                        }
+                    }
+                ?>
         }
-        echo'</ul>';
-    ?>
+        </ul>
 
     </div>
 

@@ -77,6 +77,11 @@ Route::any('admin/cities/del/{id}', 'CitiesController@delete');
 Route::any('admin/qlist', 'QuestionController@showList');
 
 /**
+ * City List
+*/
+Route::any('admin/clist', 'CitiesController@showList');
+
+/**
  * Additional function
 */
 Route::any('admin/additional', 'AdditionalController@showAdditional');

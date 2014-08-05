@@ -11,4 +11,6 @@ return array(
 
 	'game_map_n' => 2
 
+	'game_map_n' => 2
+
 );

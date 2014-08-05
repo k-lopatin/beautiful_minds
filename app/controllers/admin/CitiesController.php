@@ -6,6 +6,7 @@ class CitiesController extends BaseController
 
     private $viewVars = [];
     private $filesList = [];
+    private $c_per_page;
 
     private $model = 'City';
 
@@ -15,6 +16,8 @@ class CitiesController extends BaseController
         }
         $this->setViewVarsStandart();
         $this->viewVars['typeTitle'] = 'города';
+
+        $this->c_per_page = 15;
     }
 
     public function add()
@@ -35,7 +38,7 @@ class CitiesController extends BaseController
         }
 
         $this->viewVars['questions'] = City::orderBy('id', 'desc')->take(10)->get();
-        return View::make('admin.questions.addCities', $this->viewVars);
+        return View::make('admin.cities.addCities', $this->viewVars);
     }
 
     public function edit($id)
@@ -61,7 +64,7 @@ class CitiesController extends BaseController
         $this->setViewVarsByQ($q);
 
         $this->viewVars['questions'] = City::orderBy('id', 'desc')->take(10)->get();
-        return View::make('admin.questions.editCities', $this->viewVars);
+        return View::make('admin.cities.editCities', $this->viewVars);
     }
 
     public function delete($id)
@@ -78,19 +81,43 @@ class CitiesController extends BaseController
             if ( $q->delete() ) {
                 $this->viewVars['message'] = 'Город успешно удален!';
                 $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
-                return View::make('admin.questions.addCities', $this->viewVars);
+                return View::make('admin.cities.addCities', $this->viewVars);
 
             } else {
                 $this->viewVars['message'] = 'УУУпс. Ошибонька.';
                 $this->viewVars['questions'] = $model::orderBy('id', 'desc')->take(10)->get();
-                return View::make('admin.questions.addCities',$this->viewVars);
+                return View::make('admin.cities.addCities',$this->viewVars);
             }
         }
 
         $this->viewVars['questions'] = City::all();
-        return View::make('admin.questions.delCities', $this->viewVars);
+        return View::make('admin.cities.delCities', $this->viewVars);
     }
+    public function showList()
+    {
+        if (!Input::has('type')) {
+            return 'error';
+        }
+        $model = 'City';
+        $where = '';
+        $this->viewVars['typeTitle'] = 'Города';
+        $this->viewVars['linkType'] = 'city';
+        $this->viewVars['linkToQ'] = 'cities';
+        $questions = $model::orderBy('id', 'desc');
+        $this->viewVars['linkCategory'] = Input::get('category');
+        $this->viewVars['linkComplexity'] = Input::get('complexity');
+        $this->viewVars['search'] = Input::get('s');
+        $this->viewVars['questions'] = $questions->paginate($this->c_per_page);
+        $this->viewVars['count'] = $questions->count();
 
+        if( Input::has('s') && Input::get('s') != '' ){
+            $where .= 'name LIKE '.Input::get('s');
+            $questions = $questions->whereRaw( $where );
+            $this->viewVars['search'] = Input::get('s');
+        }
+
+        return View::make('admin.cities.list', $this->viewVars);
+    }
     /*public function showFromCat($id)
     {
         if ( !is_numeric($id) ) {

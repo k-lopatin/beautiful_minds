@@ -34,6 +34,8 @@ class RandomQuestionController extends BaseController
         echo '<h2>На карту</h2>';
         $this->getQuestionsForGame( 'QuestionMap', Config::get('game.game_map_n') );
 
+
+
     }
     private function getQuestionsForGame($model, $n)
     {
