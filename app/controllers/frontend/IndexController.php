@@ -11,7 +11,9 @@ class IndexController extends BaseController
 
     public function index()
     {
-        return View::make('frontend.index');
+        $c = CityLibrary::getRandomFreeCity();
+        $this->viewVars['random_city'] = $c->name;
+        return View::make('frontend.index', $this->viewVars);
     }
 
 

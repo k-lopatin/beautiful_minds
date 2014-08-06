@@ -10,12 +10,11 @@ class CityLibrary extends Eloquent
     public static function getRandomFreeCity()
     {
         $model = 'City';
-        echo '<ul>';
         $c = self::getRandomCity($model, $model::count()); //@todo cache count results
         if($c !== NULL){
-            echo '<li>'.$c->name.'</li>';
+            return $c;
         } else {
-            echo "ERROR!";
+            return NULL;
         }
     }
     public static function getRandomCity($model, $maxN)
