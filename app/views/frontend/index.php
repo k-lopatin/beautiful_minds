@@ -16,14 +16,30 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOTFFHfkbIVlNQzCf_Batc4V-WLTzH74c&sensor=TRUE">
     </script>
     <script type="text/javascript" src="assets/frontend/js/google_maps.js"></script>
-     <script type="text/javascript" src="assets/frontend/js/main.js"></script>
+    <script type="text/javascript" src="assets/frontend/js/main.js"></script>
+    <script type="text/javascript" src="assets/frontend/js/slider.js"></script>
 
     <link rel="stylesheet" href="assets/frontend/css/main.css">
 </head>
 <body>
 
-    <div id="map_canvas"></div>
-
+    <!--<div id="map_canvas"></div>-->
+    <div id="slideshow">
+        <div id="slidesContainer">
+            <div class="slide">
+                <img src="/assets/frontend//img/p1.jpg"/ class="slide">
+            </div>
+            <div class="slide">
+                <img src="/assets/frontend//img/p2.jpg"/ class="slide">
+            </div>
+            <div class="slide">
+                <img src="/assets/frontend//img/p3.jpg"/ class="slide">
+            </div>
+            <div class="slide">
+                <img src="/assets/frontend//img/p4.jpg"/ class="slide">
+            </div>
+        </div>
+    </div>
     <div id="top_login">
         <input type="text" name="login" value="" placeholder="логин">
         <input type="text" name="password" value="" placeholder="пароль">
