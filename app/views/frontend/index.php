@@ -12,10 +12,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 
-    <script type="text/javascript"
+    <!--<script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOTFFHfkbIVlNQzCf_Batc4V-WLTzH74c&sensor=TRUE">
     </script>
-    <script type="text/javascript" src="assets/frontend/js/google_maps.js"></script>
+    <script type="text/javascript" src="assets/frontend/js/google_maps.js"></script>-->
     <script type="text/javascript" src="assets/frontend/js/main.js"></script>
     <script type="text/javascript" src="assets/frontend/js/slider.js"></script>
 
@@ -27,16 +27,16 @@
     <div id="slideshow">
         <div id="slidesContainer">
             <div class="slide">
-                <img src="/assets/frontend//img/p1.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p1.jpg" class="slide">
             </div>
             <div class="slide">
-                <img src="/assets/frontend//img/p2.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p2.jpg" class="slide">
             </div>
             <div class="slide">
-                <img src="/assets/frontend//img/p3.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p3.jpg" class="slide">
             </div>
             <div class="slide">
-                <img src="/assets/frontend//img/p4.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p4.jpg" class="slide">
             </div>
         </div>
     </div>
