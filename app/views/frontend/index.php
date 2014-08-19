@@ -27,16 +27,16 @@
     <div id="slideshow">
         <div id="slidesContainer">
             <div class="slide">
-                <img src="/assets/frontend//img/p1.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p1.jpg" class="slide">
             </div>
             <div class="slide">
-                <img src="/assets/frontend//img/p2.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p2.jpg" class="slide">
             </div>
             <div class="slide">
-                <img src="/assets/frontend//img/p3.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p3.jpg" class="slide">
             </div>
             <div class="slide">
-                <img src="/assets/frontend//img/p4.jpg"/ class="slide">
+                <img src="/assets/frontend/img/p4.jpg" class="slide">
             </div>
         </div>
     </div>
