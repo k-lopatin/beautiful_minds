@@ -10,8 +10,42 @@
     position: absolute;
     z-index: 10;
 }
+#slideshow{
+    width:1920px;
+    height:1080px;
+    overflow:hidden;
+}
+#slidesContainer{
+    width:800px;
+    position:relative;
+}
+#slidesContainer div{
+    width:1920px;
+    height:1080px;
+    float:left;
+    position:relative;
+}
+#slideshow{
+    width:1920px;
+    height:1080px;
+    overflow:hidden;
+}
+#slidesContainer{
+    width:800px;
+    position:relative;
+}
+#slidesContainer div{
+    width:1920px;
+    height:1080px;
+    float:left;
+    position:relative;
+}
 
-
+#slideshow #slidesContainer .slide {
+    margin:0 auto;
+    width:1920px;
+    height:1080px;
+}
 
 #top_login {
     position: absolute;
