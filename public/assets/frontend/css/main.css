@@ -4,47 +4,27 @@
 }
 
 
-#map_canvas {
-    width: 100%;
-    min-height: 100%;
+#slideshow {
+    width:100%;
+    overflow:hidden;
+}
+#slideshow div{
+    width:100%;
     position: absolute;
-    z-index: 10;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: none;
+    overflow: hidden;
 }
-#slideshow{
-    width:1920px;
-    height:1080px;
-    overflow:hidden;
+#slideshow div:first-child {
+    display: block;
 }
-#slidesContainer{
-    width:800px;
-    position:relative;
-}
-#slidesContainer div{
-    width:1920px;
-    height:1080px;
-    float:left;
-    position:relative;
-}
-#slideshow{
-    width:1920px;
-    height:1080px;
-    overflow:hidden;
-}
-#slidesContainer{
-    width:800px;
-    position:relative;
-}
-#slidesContainer div{
-    width:1920px;
-    height:1080px;
-    float:left;
-    position:relative;
-}
-
-#slideshow #slidesContainer .slide {
-    margin:0 auto;
-    width:1920px;
-    height:1080px;
+#slideshow div img {
+    width: 100%;    
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #top_login {

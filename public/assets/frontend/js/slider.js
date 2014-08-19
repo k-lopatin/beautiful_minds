@@ -1,19 +1,20 @@
-$(function(){  //shorthand for $(document).ready()
+$(function() {  //shorthand for $(document).ready()
 
-    var width = $('#slidesContainer div').width();  // get the width of our div
-    var divarr = $('div.slide');
+    var divarr = $('#slideshow .slide');
+    var i = 0;
+    $('#slideshow div').height( $(window).height() );
+    setInterval(function() {
 
-    var ii = 0;
-    setInterval(function(){
-        for(var i = 0; i < 4; i++)
-            $(divarr[ii]).opacity=0;
-        $(divarr[ii]).fadeIn(500);
-        if(ii!=0)
-            $(divarr[ii-1]).fadeOut(500);
-        ii++;
-        if(ii==divarr.length)
-            ii=0;
-        //slide();
-    }, 2000);
-    // run our animation the very first time
+        $(divarr[i]).fadeIn(1500);
+
+        if (i != 0) {
+            $(divarr[i - 1]).fadeOut(1500);
+        } else {
+            $(divarr[ divarr.length - 1 ]).fadeOut(1500);
+        }
+
+        i++;
+        if (i == divarr.length)
+            i = 0;
+    }, 3000);
 });
