@@ -32,12 +32,12 @@
             <div class="slide">
                 <img src="/assets/frontend/img/p2.jpg" class="slide">
             </div>
-            <!--<div class="slide">
+            <div class="slide">
                 <img src="/assets/frontend/img/p3.jpg" class="slide">
             </div>
             <div class="slide">
                 <img src="/assets/frontend/img/p4.jpg" class="slide">
-            </div>-->
+            </div>
         </div>
     </div>
     <div id="top_login">
