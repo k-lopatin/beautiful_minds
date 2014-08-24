@@ -21,7 +21,7 @@
     display: block;
 }
 #slideshow div img {
-    width: 100%;    
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -139,4 +139,8 @@
     float: right;
     display: block;
     color: #83d3c9;
+}
+
+.clear {
+    clear: both;
 }

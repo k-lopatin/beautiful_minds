@@ -1,0 +1,27 @@
+#statement {
+    background: #000;
+    margin: 30px auto 20px auto;
+    width: 650px;
+    color: #fff;
+    font-size: 19px;
+    padding: 10px 40px;
+}
+#tests {
+    margin: 0 auto 50px auto;
+    width: 730px;
+    color: #fff;
+
+}
+
+#tests .test {
+    padding: 10px 15px;
+    margin: 5px 0;
+    float: left;
+    width: 300px;
+    background: #000;
+    color: #fff;
+    font-size: 17px;
+}
+#tests .test:nth-child(even) {
+    margin-left: 68px;
+}

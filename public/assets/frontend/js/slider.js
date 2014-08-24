@@ -1,4 +1,4 @@
-$(function() {  //shorthand for $(document).ready()
+$(function() {
 
     var divarr = $('#slideshow .slide');
     var i = 0;

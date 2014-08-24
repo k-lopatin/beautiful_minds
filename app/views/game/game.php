@@ -18,8 +18,10 @@
     <script type="text/javascript" src="assets/frontend/js/google_maps.js"></script>-->
         <script type="text/javascript" src="assets/frontend/js/main.js"></script>
         <script type="text/javascript" src="assets/frontend/js/slider.js"></script>
+        <script type="text/javascript" src="assets/game/js/game.js"></script>
 
         <link rel="stylesheet" href="assets/frontend/css/main.css">
+        <link rel="stylesheet" href="assets/game/css/main.css">
     </head>
     <body>
 
@@ -38,26 +40,17 @@
                 <img src="/assets/frontend/img/p4.jpg">
             </div>
         </div>
-        <div id="top_login">
+        <!-- <div id="top_login">
             <input type="text" name="login" value="" placeholder="логин">
             <input type="text" name="password" value="" placeholder="пароль">
             <input type="submit" value="Войти">
-        </div>
+        </div>-->
 
         <div id="container">
-            <h1>Мозговой штурм!</h1>
-            <ul>
-                <li>Выбери город, который хочешь завоевать</li>
-                <li>Отвечай вопросы и получай поддержку населения</li>
-                <li>Если соберешь достаточно голосов в свою поддержку, станешь главой этого города и сможешь собирать дань с жителей</li>
-                <li>Узнавай правильные ответы, а также пояснения к ним, чтобы повысить уровень своей эрудиции</li>
-                <li>Следи, чтобы в твоем городе не возникла революция, а также защищай город от других завоевателей</li>
-                <li>Попробуй завоевать города друзей и покажи кто здесь главный</li>
-                <li>Завоевывай больше городов, получай титулы и поднимайся в рейтинге</li>
-                <li>Прокачай свой интеллект и сообразительность вместе с нами</li>
-            </ul>
-            <p class="try">Мы подобрали вам случайный город: <span class="city"><?= $random_city ?></span></p>
-            <a href="/game" class="try_btn">Завоевать!</a>
+            <div id="statement"></div>
+            <div id="tests">
+                <div class="clear"></div>
+            </div>
         </div>
 
 
