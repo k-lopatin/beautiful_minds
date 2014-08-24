@@ -2,49 +2,41 @@ $(function() {
 
     var Timer = new Object();
 
-    var s;
+    Timer.s = 0;
+    Timer.f;
+    Timer.clock;
 
     Timer.startTimer = function() {
-        if (s == 0) {
+        var s = Timer.s;
+        if (Timer.s < 10)
+            s = "0" + Timer.s;
+        $('#my_timer').html(s);
+
+        if (Timer.s == 0) {
+            clearInterval(Timer.clock);
+            Timer.f();
             return;
         }
-        s--;
-        if (s < 10) s = "0" + s;
-        document.getElementById("my_timer").innerHTML = s;
-        setTimeout(Timer.startTimer, 1000);
-    }
-
-    Timer.init = function(_s) {
-        s = _s;
+        Timer.s--;
     }
 
     Timer.move = function(elem, seconds) {
-        var top = 0;
-        var Timer_slider_bg = document.getElementById("bg1");
-        var bg_height = getComputedStyle(Timer_slider_bg,null).getPropertyValue("height");
-        console.log(bg_height);
-        var t =((parseInt(bg_height)/(seconds-1))*0.01).toFixed(6);
-        console.log(t);
-        function frame_bottom() {
-            top+=parseFloat(t);
-            console.log(top);
-            top.toFixed(6);
-            elem.style.height = top.toFixed(6) + 'px';
-            if (top>parseInt(bg_height)-0.6 && top <= parseInt(bg_height)) {
-                clearInterval(timer);
-            }
-        }
-        var timer = setInterval(frame_bottom, 8);
+
     }
 
-    Timer.start = function(seconds){
-        seconds++;
-        var Timer_slider = document.getElementById("bg2");
-        Timer.init(seconds);
-        Timer.move(Timer_slider, seconds);
+    Timer.start = function(seconds, f) {
+        Timer.s = seconds;
         Timer.startTimer();
+        Timer.f = f;
+        $('#bg2').animate({height: '100%'}, seconds*1000, 'linear');
+        Timer.clock = setInterval(function(){
+            Timer.startTimer();
+        }, 1000);
+
     }
 
-    Timer.start(10);
+    Timer.start(10, function(){
+        alert('stop');
+    });
 
 });

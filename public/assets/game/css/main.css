@@ -67,9 +67,8 @@
     margin: 30px 0px 0px 50px;
 }
 #bg2{
-    position: absolute;
+    //position: absolute;
     background-color: #FFA900;
     width:100px;
-    height:0px;
-    margin: 30px 0px 0px 50px;
+    height:0%;
 }

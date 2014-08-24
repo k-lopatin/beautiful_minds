@@ -49,9 +49,8 @@
 
         <div id="container">
             <div id="bg1">
-
+                <div id="bg2"><div id="my_timer"></div></div>
             </div>
-            <div id="bg2"><div id="my_timer"></div></div>
             <div id="statement"></div>
             <div id="tests">
                 <div class="clear"></div>
