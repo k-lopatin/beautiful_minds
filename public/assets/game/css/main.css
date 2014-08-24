@@ -25,3 +25,33 @@
 #tests .test:nth-child(even) {
     margin-left: 68px;
 }
+#my_timer{
+    position: absolute;
+    color: #14161A;
+    font-size: 75px;
+    font-weight: bold;
+    margin-left: 12px;
+    padding-top: 20px;
+}
+#slider{
+    position: absolute;
+    color: #14161A;
+    font-size: 400%;
+    font-weight: bold;
+    top:10px;
+}
+
+#bg1{
+    position: absolute;
+    background-color:    #4980CB;
+    width:100px;
+    height:150px;
+    margin: 30px 0px 0px 50px;
+}
+#bg2{
+    position: absolute;
+    background-color:    #FFA900;
+    width:100px;
+    height:0px;
+    margin: 30px 0px 0px 50px;
+}
