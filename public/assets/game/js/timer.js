@@ -5,8 +5,6 @@ $(function() {
     var s;
 
     Timer.startTimer = function() {
-        var my_timer = document.getElementById("my_timer");
-        var Timer_slider_bg = document.getElementById("bg1");
         if (s == 0) {
             return;
         }
@@ -24,16 +22,19 @@ $(function() {
         var top = 0;
         var Timer_slider_bg = document.getElementById("bg1");
         var bg_height = getComputedStyle(Timer_slider_bg,null).getPropertyValue("height");
+        console.log(bg_height);
         var t =((parseInt(bg_height)/(seconds-1))*0.01).toFixed(6);
+        console.log(t);
         function frame_bottom() {
             top+=parseFloat(t);
+            console.log(top);
             top.toFixed(6);
-            elem.style.height = top.toFixed(6) + 'px'
+            elem.style.height = top.toFixed(6) + 'px';
             if (top>parseInt(bg_height)-0.6 && top <= parseInt(bg_height)) {
                 clearInterval(timer);
             }
         }
-        var timer = setInterval(frame_bottom, 10);
+        var timer = setInterval(frame_bottom, 8);
     }
 
     Timer.start = function(seconds){
