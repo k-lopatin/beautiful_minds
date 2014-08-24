@@ -21,7 +21,25 @@
     background: #000;
     color: #fff;
     font-size: 17px;
+
+    box-shadow: #444 0 0 6px;
+
+    cursor: pointer;
 }
+#tests .test:hover {
+    box-shadow: #994 0 0 7px;
+}
+
+#tests .test.selected {
+    background: #b92;
+}
+#tests .test.true {
+    background: #6a4;
+}
+#tests .test.false {
+    background: #c10;
+}
+
 #tests .test:nth-child(even) {
     margin-left: 68px;
 }

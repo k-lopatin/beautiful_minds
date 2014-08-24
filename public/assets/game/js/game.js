@@ -2,6 +2,9 @@ $(function() {
 
     var Game = new Object();
 
+    Game.questions = [];
+    Game.testsOrder = [];
+
     Game.genTestsOrder = function(n)
     {
         var used = [];
@@ -31,10 +34,36 @@ $(function() {
          * Генерирует порядок вариантов ответов в разброс. Первый ответ верный.
          */
 
-        order = this.genTestsOrder(Object.keys(tests).length);
-        for (var i in order) {
-            $('#tests').prepend('<div class="test">' + tests[ order[i] ] + '</div>');
+        Game.testsOrder = this.genTestsOrder(Object.keys(tests).length);
+        for (var i in Game.testsOrder) {
+            $('#tests').prepend('<div class="test" n="' + i + '">' + tests[ Game.testsOrder[i] ] + '</div>');
         }
+    }
+
+    Game.checkTest = function(selected)
+    {
+        var n = selected.attr('n');
+        if (Game.testsOrder[n] == 1) {
+            selected.removeClass('selected').addClass('true');
+        } else {
+            selected.removeClass('selected').addClass('false');
+        }
+    }
+
+    Game.clickTest = function()
+    {
+        var selected = $(this);
+        selected.addClass('selected');
+        var i = 3;
+        var blink = setInterval(function() {
+
+            selected.toggleClass('selected');
+
+            if (i-- == 0) {
+                clearInterval(blink);
+                Game.checkTest(selected);
+            }
+        }, 300);
     }
 
     Game.start = function()
@@ -46,5 +75,7 @@ $(function() {
     }
 
     Game.start();
+
+    $('#tests').on('click', '.test', Game.clickTest);
 
 });
