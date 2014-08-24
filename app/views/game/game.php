@@ -19,6 +19,7 @@
         <script type="text/javascript" src="assets/frontend/js/main.js"></script>
         <script type="text/javascript" src="assets/frontend/js/slider.js"></script>
         <script type="text/javascript" src="assets/game/js/game.js"></script>
+        <script type="text/javascript" src="assets/game/js/timer.js"></script>
 
         <link rel="stylesheet" href="assets/frontend/css/main.css">
         <link rel="stylesheet" href="assets/game/css/main.css">
@@ -47,6 +48,10 @@
         </div>-->
 
         <div id="container">
+            <div id="bg1">
+
+            </div>
+            <div id="bg2"><div id="my_timer"></div></div>
             <div id="statement"></div>
             <div id="tests">
                 <div class="clear"></div>
