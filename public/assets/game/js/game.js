@@ -100,7 +100,4 @@ $(function() {
     }
 
     Game.start();
-
-
-
 });

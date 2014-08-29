@@ -20,6 +20,7 @@
         <script type="text/javascript" src="assets/frontend/js/slider.js"></script>
         <script type="text/javascript" src="assets/game/js/game.js"></script>
         <script type="text/javascript" src="assets/game/js/timer.js"></script>
+        <script type="text/javascript" src="assets/game/js/points.js"></script>
 
         <link rel="stylesheet" href="assets/frontend/css/main.css">
         <link rel="stylesheet" href="assets/game/css/main.css">

@@ -20,10 +20,6 @@ $(function() {
         Timer.s--;
     }
 
-    Timer.move = function(elem, seconds) {
-
-    }
-
     Timer.start = function(seconds, f) {
         Timer.s = seconds;
         Timer.startTimer();
@@ -32,7 +28,6 @@ $(function() {
         Timer.clock = setInterval(function(){
             Timer.startTimer();
         }, 1000);
-
     }
 
     Timer.start(10, function(){

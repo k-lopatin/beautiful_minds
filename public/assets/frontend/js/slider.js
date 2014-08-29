@@ -5,16 +5,16 @@ $(function() {
     $('#slideshow div').height( $(window).height() );
     setInterval(function() {
 
-        $(divarr[i]).fadeIn(1500);
+        $(divarr[i]).fadeIn(3000);
 
         if (i != 0) {
-            $(divarr[i - 1]).fadeOut(1500);
+            $(divarr[i - 1]).fadeOut(3000);
         } else {
-            $(divarr[ divarr.length - 1 ]).fadeOut(1500);
+            $(divarr[ divarr.length - 1 ]).fadeOut(3000);
         }
 
         i++;
         if (i == divarr.length)
             i = 0;
-    }, 3000);
+    }, 6000);
 });
