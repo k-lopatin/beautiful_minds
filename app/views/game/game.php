@@ -52,9 +52,17 @@
             <div id="bg1">
                 <div id="bg2"><div id="my_timer"></div></div>
             </div>
-            <div id="statement"></div>
-            <div id="tests">
-                <div class="clear"></div>
+            <div id="testQ">
+                <div class="statement"></div>
+                <div class="tests">
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div id="numberQ">
+                <div class="statement"></div>
+                <div class="inputAnsw">
+                    <input type="number" />
+                </div>
             </div>
         </div>
 

@@ -61,6 +61,8 @@ class RandomQuestionController extends BaseController
         $game = array(
             'tests' => $this->getQuestions('QuestionTest', Config::get('game.game_test_n')),
             'game_test_n' => Config::get('game.game_test_n'),
+            'numbers' => $this->getQuestions('QuestionNumber', Config::get('game.game_number_n')),
+            'game_number_n' => Config::get('game.game_number_n'),
         );
         echo json_encode($game);
     }

@@ -1,4 +1,4 @@
-#statement {
+.statement {
     background: #000;
     margin: 30px auto 20px auto;
     width: 650px;
@@ -6,14 +6,14 @@
     font-size: 19px;
     padding: 10px 40px;
 }
-#tests {
+.tests {
     margin: 0 auto 50px auto;
     width: 730px;
     color: #fff;
 
 }
 
-#tests .test {
+.tests .test {
     padding: 10px 15px;
     margin: 5px 0;
     float: left;
@@ -26,23 +26,42 @@
 
     cursor: pointer;
 }
-#tests .test:hover {
+.tests .test:hover {
     box-shadow: #994 0 0 7px;
 }
 
-#tests .test.selected {
+.tests .test.selected {
     background: #b92;
 }
-#tests .test.true {
+.tests .test.true {
     background: #6a4;
 }
-#tests .test.false {
+.tests .test.false {
     background: #c10;
 }
 
-#tests .test:nth-child(even) {
+.tests .test:nth-child(even) {
     margin-left: 68px;
 }
+
+#numberQ {
+    display: none;
+}
+.inputAnsw {
+    margin: 0 auto 50px auto;
+    width: 630px;
+    background: #000;
+    padding: 20px 50px;
+}
+.inputAnsw input {
+    height: 25px;
+    font-size: 16px;
+    color: #111;
+}
+
+
+
+/*-------------------- TIMER ---------------------*/
 #my_timer{
     position: absolute;
     color: #14161A;
@@ -72,3 +91,4 @@
     width:100px;
     height:0%;
 }
+/*-------------------- END OF TIMER ---------------------*/
