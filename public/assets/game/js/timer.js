@@ -34,7 +34,9 @@ Timer.start = function(seconds, f) {
 };
 
 
+
 Timer.stop = function() {
     clearInterval(Timer.clock);
     $('#bg2').stop();
 };
+
