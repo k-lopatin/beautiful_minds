@@ -35,8 +35,7 @@ $(function() {
 
     }
 
-    Timer.start(10, function(){
+    Timer.start(1, function(){
         alert('stop');
     });
-
 });
