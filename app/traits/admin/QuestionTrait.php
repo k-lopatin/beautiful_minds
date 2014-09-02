@@ -18,7 +18,6 @@ trait QuestionTrait
         $this->viewVars['description'] = '';
         $this->viewVars['link'] = '';
         $this->viewVars['map'] = '';
-
         $this->viewVars['categories'] = Category::all();
 
         //Files inputs
@@ -60,6 +59,9 @@ trait QuestionTrait
         $this->viewVars['plustime'] = Input::get('plustime');
         $this->viewVars['description'] = Input::get('description');
         $this->viewVars['link'] = Input::get('link');
+        $this->viewVars['login'] = Input::get('login');
+        $this->viewVars['password'] = Input::get('password');
+        $this->viewVars['email'] = Input::get('email');
 
         //Files inputs
 
@@ -84,6 +86,9 @@ trait QuestionTrait
         $this->viewVars['description'] = $q->description;
         $this->viewVars['id'] = $q->id;
         $this->viewVars['link'] = $q->link;
+        $this->viewVars['login'] = $q->login;
+        $this->viewVars['password'] = $q->password;
+        $this->viewVars['email'] = $q->email;
 
         if($this->model == 'QuestionMap'){
             $this->viewVars['map'] = $q->map;
