@@ -22,8 +22,8 @@ $(function() {
             var lengthCheckingWord = checkingWord.length;
             var j = 0;
             var b = Math.max(lengthCheckingWord, lengthRightWord)
-            alert(rightWord);
-            alert(checkingWord);
+            //alert(rightWord);
+            //alert(checkingWord);
             //alert(lengthCheckingWord +" " + lengthRightWord);
             for(var i = 0; i < b; i++)
             {
@@ -97,74 +97,80 @@ $(function() {
         //alert(c2);
     }
 
-    P.getPoints = function(type, population, time, answer, correct_answer, isTrue)
+    P.check_number = function(correctAnswer, answer){
+        var error;
+        var tmp = Math.min(Math.abs(correctAnswer), Math.abs(answer));
+        if(tmp<=10){
+            error = 1;
+        }
+        else if(tmp>10 && tmp<=100){
+            error = 10;
+        }
+        else if(tmp>100 && tmp<=1000){
+            error = 50;
+        }
+        else if(tmp>1000 && tmp<=10000){
+            error = 200;
+        }
+        else{
+            error = 500;
+        }
+
+        if(Math.abs(correctAnswer) - Math.abs(answer) <= error)
+            return 0;
+        else
+            return -1;
+    }
+
+    P.setTime = function (T, t) {
+        if(t==0)
+            t=1;
+        return (t/T).toFixed(2);
+    }
+
+    P.getPoints = function(type, population, allTime, curTime, correctAnswer, answer, isTrue)
     {
         answer = answer || null;
-        correct_answer = correct_answer || null;
+        correctAnswer = correctAnswer || null;
         var curPoint = population/(P.p_number+ P.p_word + P.p_test);
         var res = 0;
             switch (type) {
                 case 'test':
                     if(isTrue){
-                        if(time>5){
-                            res = curPoint;
-                        }
-                        else if(time <=5 && time >1) {
-                            res = 0,75*curPoint;
-                        }
-                        else {
-                            res = 0,6*curPoint;
-                        }
-                    }
-                    break;
-                case 'word':
-                    if(isTrue){
-                        if(time>5) {
-                            res = curPoint;
-                        }
-                        else if(time <=5 && time >1) {
-                            res = 0,75*curPoint;
-                        }
-                        else {
-                            res = 0,6*curPoint;
-                        }
+                        res = 0.5 + 0.5*P.setTime(allTime, curTime);
                     }
                     break;
                 case 'number':
                     if(!isTrue){
-                        if(time>5) {
-                            res = 0.5*curPoint;
-                        }
-                        else if(time <=5 && time >1) {
-                            res = 0,25*curPoint;
+                        res = 0.5 + 0.5*P.setTime(allTime, curTime);
+                        if(P.check_number(correctAnswer,answer) == 0) {
+                            res-=0.25;
                         }
                         else {
-                            res = 0.15*curPoint;
+                            res=0;
                         }
-
-                        if(P.find_mistake(correct_answer,answer) == 1) {
-                            res+=0,25*curPoint;
+                    }
+                    else
+                        res = 0.5 + 0.5*P.setTime(allTime, curTime);
+                    break;
+                case 'word':
+                    if(!isTrue){
+                        res = 0.5 + 0.5*P.setTime(allTime, curTime);
+                        if(P.find_mistake(correctAnswer,answer) == 1) {
+                            res-=0.25;
                         }
-                        else if(P.find_mistake(correct_answer,answer) == 2) {
-                            res+=0,15*curPoint;
+                        else if(P.find_mistake(correctAnswer,answer) == 2) {
+                            res-=0.35;
                         }
                         else {
                             res = 0;
                         }
                     }
                     else {
-                        if(time>5) {
-                            res = curPoint;
-                        }
-                        else if(time <=5 && time >1) {
-                            res = 0,75*curPoint;
-                        }
-                        else {
-                            res = 0,6*curPoint;
-                        }
+                        res = 0.5 + 0.5*P.setTime(allTime, curTime);
                     }
                     break;
             }
-        return res;
+        return res*curPoint;
     }
 });

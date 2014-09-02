@@ -105,7 +105,7 @@ Route::any('getgame/', 'RandomQuestionController@getGame');
 Route::any('getgamejson/', 'RandomQuestionController@getGameJson');
 
 Route::any('game/', 'GameController@showGame');
-
+Route::any('game/registration', 'IndexController@Register');
 
 Route::any('/', 'IndexController@index');
 
