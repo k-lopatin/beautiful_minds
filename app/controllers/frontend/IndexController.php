@@ -4,18 +4,19 @@ class IndexController extends BaseController
 {
     private $viewVars = [];
 
-    private $model = 'Register';
+    private $model = 'Player';
 
     function __construct(){
         $this->viewVars['name'] = '';
         $this->viewVars['login'] = '';
         $this->viewVars['password'] = '';
         $this->viewVars['email'] = '';
+        $this->viewVars['message'] = '';
     }
 
     public function Register()
     {
-        return View::make('frontend.Register');
+        return View::make('frontend.register', $this->viewVars);
     }
 
     public function add()
@@ -23,7 +24,7 @@ class IndexController extends BaseController
         $model = $this->model;
 
         if (Input::has('name')) {
-            $q = new Register;
+            $q = new Player;
             if ($q->add(Input::get('name'), Input::get('login'), Input::get('password'), Input::get('email'))) {
                 $this->viewVars['message'] = 'Вопрос успешно добавлен!';
             } else {
@@ -31,10 +32,10 @@ class IndexController extends BaseController
                 $this->viewVars['login'] = Input::get('login');
                 $this->viewVars['email'] = Input::get('email');
                 $this->viewVars['password'] = Input::get('password');
-                $this->viewVars['password'] = Hash::make('secret');
+                $this->viewVars['message'] = 'Корректно заполните все поля';
             }
         }
-        return View::make('frontend.Register', $this->viewVars);
+        return View::make('frontend.register', $this->viewVars);
     }
 
     public function index()
