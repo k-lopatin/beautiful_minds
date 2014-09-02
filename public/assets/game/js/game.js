@@ -8,6 +8,10 @@ $(function() {
     Game.curType = 'tests';
     Game.curRightAnswer = 0;
 
+    Game.curTime = 0;
+
+    Game.Points = 0;
+
     Game.game_test_n = 0;
     Game.game_number_n = 0;
 
@@ -92,7 +96,7 @@ $(function() {
             }
         })
 
-        Timer.start(10, Game.NumberTimeout);
+       Timer.start(10, Game.NumberTimeout);
     }
 
     Game.TestTimeout = function() {
@@ -116,11 +120,19 @@ $(function() {
         setTimeout(Game.next, 1500);
     }
 
+    Game.addPoints = function(p)
+    {
+        Game.Points += p;
+        $('#city #points').html(Game.Points);
+    }
+
     Game.checkTest = function(selected)
     {
         var n = selected.attr('n');
         if (n == Game.curRightAnswer) {
             selected.removeClass('selected').addClass('true');
+            var p = Points.getPoints('test', 1000000, 10, Game.curTime, true);
+            Game.addPoints( p );
         } else {
             selected.removeClass('selected').addClass('false');
             console.log(Game.testsOrder[0]);
@@ -132,7 +144,7 @@ $(function() {
 
     Game.clickTest = function()
     {
-        Timer.stop();
+        Game.curTime = Timer.stop();
 
         $('#tests').off('click', '.test');
         var selected = $(this);
@@ -186,7 +198,7 @@ $(function() {
             Game.questions = data;
             console.log(Game.questions);
             //Game.game_test_n = Game.questions['game_test_n'];
-            Game.game_test_n = 1;
+            Game.game_test_n = 2;
             Game.game_number_n = Game.questions['game_number_n'];
             Game.next();
         });

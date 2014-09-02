@@ -23,6 +23,7 @@ Timer.startTimer = function() {
 };
 
 Timer.start = function(seconds, f) {
+    Timer.stop();
     Timer.s = seconds;
     Timer.startTimer();
     Timer.f = f;
