@@ -33,17 +33,7 @@ Timer.start = function(seconds, f) {
     }, 1000);
 };
 
-
-
-<<<<<<< HEAD
 Timer.stop = function() {
     clearInterval(Timer.clock);
     $('#bg2').stop();
 };
-
-=======
-    Timer.start(1, function(){
-        alert('stop');
-    });
-});
->>>>>>> 9cf33af071b03703f156ce3eb5cd7dc5d5d01ff3
