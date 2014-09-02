@@ -61,9 +61,12 @@
             <div id="numberQ">
                 <div class="statement"></div>
                 <div class="inputAnsw">
-                    <input type="number" />
+                    <input type="number" autofocus />
                 </div>
             </div>
+        </div>
+        <div id="city">
+            <div id="points">0</div>
         </div>
 
 

@@ -73,6 +73,28 @@
 
 
 
+
+#city {
+    position: absolute;
+    top: 160px;
+    right: 60px;
+    z-index: 100;
+    width: 10%;
+    background: rgba(52, 27, 43, 0.8);
+    color: #fff;
+    font-size: 16px;
+}
+#city #points {
+    width: 70%;
+    margin: 20px auto;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+
+
+
 /*-------------------- TIMER ---------------------*/
 #my_timer{
     position: absolute;
