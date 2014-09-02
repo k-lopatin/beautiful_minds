@@ -138,7 +138,7 @@ $(function() {
             Game.questions = data;
             console.log(Game.questions);
             //Game.game_test_n = Game.questions['game_test_n'];
-            Game.game_test_n = 1;
+            Game.game_test_n = 0;
             Game.game_number_n = Game.questions['game_number_n'];
             Game.next();
         });
