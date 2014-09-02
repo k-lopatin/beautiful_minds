@@ -2,7 +2,12 @@ $(function() {
 
     var divarr = $('#slideshow .slide');
     var i = 0;
-    $('#slideshow div').height( $(window).height() );
+    $('#slideshow div').height($(window).height());
+
+    $(window).resize(function() {
+        $('#slideshow div').height($(window).height());
+    });
+
     setInterval(function() {
 
         $(divarr[i]).fadeIn(3000);
