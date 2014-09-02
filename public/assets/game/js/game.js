@@ -71,7 +71,7 @@ $(function() {
         }
         $('.tests').on('click', '.test', Game.clickTest);
 
-        Timer.start(10, Game.Timeout);
+        Timer.start(10, Game.TestTimeout);
     }
 
     Game.showNumberType = function() {
@@ -80,12 +80,22 @@ $(function() {
     }
     Game.showNumberQuestion = function()
     {
+        $('.inputAnsw input').val('').removeClass('true').removeClass('false').removeClass('selected');
         $('#numberQ .statement').html(this.questions[Game.curType][Game.curQuestion]['statement']);
+        $('.tests').on('click', '.test', Game.clickTest);
 
-        Timer.start(10, Game.Timeout);
+        Game.curRightAnswer = this.questions[Game.curType][Game.curQuestion]['answer'];
+
+        $('.inputAnsw').on('keypress', 'input', function(e) {
+            if (e.which == 13) {
+                Game.enterNumber();
+            }
+        })
+
+        Timer.start(10, Game.NumberTimeout);
     }
 
-    Game.Timeout = function() {
+    Game.TestTimeout = function() {
         var right = $('.test[n=' + Game.curRightAnswer + ']');
         right.addClass('true');
         var i = 5;
@@ -97,6 +107,13 @@ $(function() {
             }
         }, 300);
 
+    }
+
+    Game.NumberTimeout = function()
+    {
+        $('.inputAnsw input').removeClass('false').removeClass('selected').addClass('true');
+        $('.inputAnsw input').val(Game.curRightAnswer);
+        setTimeout(Game.next, 1500);
     }
 
     Game.checkTest = function(selected)
@@ -130,6 +147,37 @@ $(function() {
                 Game.checkTest(selected);
             }
         }, 300);
+    }
+
+    Game.enterNumber = function()
+    {
+        Timer.stop();
+        $('.inputAnsw input').addClass('selected');
+        setTimeout(function() {
+            Game.checkNumber();
+        }, 500);
+    }
+
+    Game.checkNumber = function()
+    {
+        if ($('.inputAnsw input').val() == Game.curRightAnswer) {
+            $('.inputAnsw input').removeClass('selected').addClass('true');
+            setTimeout(Game.next, 1500);
+        } else {
+            $('.inputAnsw input').removeClass('selected').addClass('false');
+            var i = 5;
+            var blink = setInterval(function() {
+                $('.inputAnsw input').toggleClass('false');
+                if (i-- == 0) {
+                    clearInterval(blink);
+                    $('.inputAnsw input').removeClass('false').addClass('true');
+                    $('.inputAnsw input').val(Game.curRightAnswer);
+                    setTimeout(Game.next, 1500);
+                }
+            }, 400);
+        }
+
+
     }
 
     Game.start = function()
