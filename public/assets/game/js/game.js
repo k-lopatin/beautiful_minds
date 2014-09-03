@@ -73,7 +73,7 @@ $(function() {
                 Game.curRightAnswer = i;
             $('.tests').prepend('<div class="test" n="' + i + '">' + tests[ Game.testsOrder[i] ] + '</div>');
         }
-        $('.tests').off('click', '.test', Game.clickTest);
+       // $('.tests').off('click', '.test', Game.clickTest);
         $('.tests').on('click', '.test', Game.clickTest);
 
         Timer.start(10, Game.TestTimeout);
@@ -150,7 +150,7 @@ $(function() {
         console.log('click');
         Game.curTime = Timer.stop();
 
-        $('#tests').off('click', '.test');
+        $('.tests').off('click', '.test');
         var selected = $(this);
         selected.addClass('selected');
         var i = 3;
@@ -184,7 +184,7 @@ $(function() {
             setTimeout(Game.next, 1500);
         } else {
             $('.inputAnsw input').removeClass('selected').addClass('false');
-            var p = Points.getPoints('number', 1000000, 10, Game.curTime, true, Game.curRightAnswer, $('.inputAnsw input').val());
+            var p = Points.getPoints('number', 1000000, 10, Game.curTime, false, Game.curRightAnswer, $('.inputAnsw input').val());
             Game.addPoints( p );
             var i = 5;
             var blink = setInterval(function() {
