@@ -278,10 +278,10 @@ $(function() {
     {
         $.getJSON("/getgamejson", function(data) {
             Game.questions = data;
-            //Game.game_test_n = Game.questions['game_test_n'];
-            Game.game_test_n = 0;
-            //Game.game_number_n = Game.questions['game_number_n'];
-            Game.game_number_n = 0;
+            Game.game_test_n = Game.questions['game_test_n'];
+            //Game.game_test_n = 0;
+            Game.game_number_n = Game.questions['game_number_n'];
+            //Game.game_number_n = 0;
             Game.game_word_n = Game.questions['game_word_n'];
             Game.next();
         });
