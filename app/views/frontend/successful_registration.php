@@ -54,8 +54,6 @@
 
         <?= Form::password('password',array('placeholder'=>'Пароль' ), $password) ?>
 
-        <?= Form::submit('Зарегистрироваться', array('class' => 'button')) ?>
-
     </div>
 
 <?= Form::close() ?>
