@@ -66,6 +66,7 @@
             </div>
         </div>
         <div id="city">
+            <div id="plus">+0</div>
             <div id="points">0</div>
         </div>
 

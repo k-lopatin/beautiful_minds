@@ -4,7 +4,7 @@ $(function() {
 
     Game.questions = [];
     Game.testsOrder = [];
-    Game.curQuestion = 0;
+    Game.curQuestion = -1;
     Game.curType = 'tests';
     Game.curRightAnswer = 0;
 
@@ -37,17 +37,17 @@ $(function() {
     {
         switch (Game.curType) {
             case 'tests':
-                if (++Game.curQuestion <= Game.game_test_n) {
+                if (++Game.curQuestion < Game.game_test_n) {
                     Game.showTestQuestion();
                 } else {
                     Game.curType = 'numbers';
-                    Game.curQuestion = 0;
+                    Game.curQuestion = -1;
                     Game.showNumberType();
                     Game.next();
                 }
                 break;
             case 'numbers':
-                if (++Game.curQuestion <= Game.game_number_n) {
+                if (++Game.curQuestion < Game.game_number_n) {
                     Game.showNumberQuestion();
                 }
                 break;
@@ -57,6 +57,7 @@ $(function() {
 
     Game.showTestQuestion = function()
     {
+        $('#city #plus').html('+0');
         $('#testQ .statement').html(this.questions[Game.curType][Game.curQuestion]['statement']);
 
         tests = JSON.parse(this.questions[Game.curType][Game.curQuestion]['tests']);
@@ -84,6 +85,7 @@ $(function() {
     }
     Game.showNumberQuestion = function()
     {
+        $('#city #plus').html('+0');
         $('.inputAnsw input').val('').removeClass('true').removeClass('false').removeClass('selected');
         $('#numberQ .statement').html(this.questions[Game.curType][Game.curQuestion]['statement']);
 
@@ -125,6 +127,7 @@ $(function() {
     {
         Game.Points += p;
         $('#city #points').html(Game.Points);
+        $('#city #plus').html('+'+p);
     }
 
     Game.checkTest = function(selected)
@@ -165,7 +168,7 @@ $(function() {
 
     Game.enterNumber = function()
     {
-        Timer.stop();
+        Game.curTime = Timer.stop();
         $('.inputAnsw input').addClass('selected');
         setTimeout(function() {
             Game.checkNumber();
@@ -176,9 +179,13 @@ $(function() {
     {
         if ($('.inputAnsw input').val() == Game.curRightAnswer) {
             $('.inputAnsw input').removeClass('selected').addClass('true');
-            setTimeout(Game.start, 1500);
+            var p = Points.getPoints('number', 1000000, 10, Game.curTime, true);
+            Game.addPoints( p );
+            setTimeout(Game.next, 1500);
         } else {
             $('.inputAnsw input').removeClass('selected').addClass('false');
+            var p = Points.getPoints('number', 1000000, 10, Game.curTime, true, Game.curRightAnswer, $('.inputAnsw input').val());
+            Game.addPoints( p );
             var i = 5;
             var blink = setInterval(function() {
                 $('.inputAnsw input').toggleClass('false');

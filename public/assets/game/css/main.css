@@ -91,6 +91,13 @@
     font-weight: bold;
     color: #ccc;
 }
+#city #plus {
+    width: 65%;
+    margin: 20px auto;
+    font-size: 25px;
+    font-weight: bold;
+    color: #bbb;
+}
 
 
 
