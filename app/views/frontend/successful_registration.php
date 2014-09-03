@@ -20,7 +20,6 @@
     <script type="text/javascript" src="../assets/frontend/js/slider.js"></script>
     <script type="text/javascript" src="../assets/game/js/game.js"></script>
 
-
     <link rel="stylesheet" href="../assets/frontend/css/main.css">
     <link rel="stylesheet" href="../assets/game/css/main.css">
 </head>
@@ -40,34 +39,21 @@
         <img src="/assets/frontend/img/p4.jpg">
     </div>
 </div>
-<div id="registration">
-    <?= Form::open(array('url' => 'game/registration')) ?>
-    <?= Form::token() ?>
+    <div id="registration">
 
-<<<<<<< HEAD
-    <?= Form::text('name', $name, array('placeholder' => 'Имя')) ?>
-=======
         <div class="row">
             <div class="large-12 columns">
                 <h3><?= $message ?></h3>
             </div>
         </div>
         <?= Form::text('name', $name, array('placeholder'=>'Имя' )) ?>
->>>>>>> registration 0.0.2
 
-    <?= Form::text('login', $login, array('placeholder' => 'Логин')) ?>
+        <?= Form::text('login', $login,array('placeholder'=>'Логин' )) ?>
 
-    <?= Form::text('email', $email, array('placeholder' => 'E-mail')) ?>
+        <?= Form::text('email', $email,array('placeholder'=>'E-mail' )) ?>
 
-<<<<<<< HEAD
-    <?= Form::password('password', $password, array('placeholder' => 'Пароль')) ?>
-=======
         <?= Form::password('password',array('placeholder'=>'Пароль' ), $password) ?>
->>>>>>> registration 0.0.2
 
-    <?= Form::submit('Зарегистрироваться', array('class' => 'button')) ?>
-    <?= Form::close() ?>
+    </div>
 
-</div>
-
-
+<?= Form::close() ?>
