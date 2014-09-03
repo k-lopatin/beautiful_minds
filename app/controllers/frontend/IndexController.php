@@ -14,19 +14,16 @@ class IndexController extends BaseController
         $this->viewVars['message'] = '';
     }
 
-    public function Register()
-    {
-        return View::make('frontend.register', $this->viewVars);
-    }
-
     public function add()
     {
         $model = $this->model;
-
-        if (Input::has('name')) {
+        if (Input::has('name') ) {
             $q = new Player;
             if ($q->add(Input::get('name'), Input::get('login'), Input::get('password'), Input::get('email'))) {
-                $this->viewVars['message'] = 'Вопрос успешно добавлен!';
+                /*if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')))) {
+                    return Redirect::intended('frontend.successful_registration');
+                }*/
+                $this->viewVars['message'] = 'Вы успешно зарегистрированы ';
             } else {
                 $this->viewVars['name'] = Input::get('name');
                 $this->viewVars['login'] = Input::get('login');
