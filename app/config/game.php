@@ -7,7 +7,7 @@ return array(
 
 	'game_number_n' => 4,
 
-	'game_word_n' => 4,
+	'game_word_n' => 2,
 
 	'game_map_n' => 2
 

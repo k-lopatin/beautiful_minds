@@ -36,6 +36,9 @@ $(function() {
 
     Game.next = function()
     {
+        /*console.log(Game.curType);
+        console.log(Game.curQuestion);
+        console.log(Game.game_word_n);*/
         switch (Game.curType) {
             case 'tests':
                 if (++Game.curQuestion < Game.game_test_n) {
@@ -49,6 +52,7 @@ $(function() {
                 break;
             case 'numbers':
                 if (++Game.curQuestion < Game.game_number_n) {
+                    console.log(Game.curQuestion);
                     Game.showNumberQuestion();
                 } else {
                     Game.curType = 'words';
@@ -59,6 +63,7 @@ $(function() {
                 break;
             case 'words':
                 if (++Game.curQuestion < Game.game_word_n) {
+                    console.log('w' + Game.curQuestion);
                     Game.showWordQuestion();
                 } else {
 
@@ -100,16 +105,18 @@ $(function() {
     Game.showWordType = function() {
         $('#numberQ').hide();
         $('#wordQ').show();
+        $('#wordQ input').focus();
     }
     Game.showNumberQuestion = function()
     {
+        console.log('t'+Game.curQuestion);
         $('#city #plus').html('+0');
         $('.inputAnsw input').val('').removeClass('true').removeClass('false').removeClass('selected');
         $('#numberQ .statement').html(this.questions[Game.curType][Game.curQuestion]['statement']);
 
         Game.curRightAnswer = this.questions[Game.curType][Game.curQuestion]['answer'];
-
-        $('.inputAnsw').on('keypress', 'input', function(e) {
+        $('#numberQ .inputAnsw').off('keypress', 'input');
+        $('#numberQ .inputAnsw').on('keypress', 'input', function(e) {
             if (e.which == 13) {
                 Game.enterNumber();
             }
@@ -120,12 +127,12 @@ $(function() {
     Game.showWordQuestion = function()
     {
         $('#city #plus').html('+0');
-        $('.inputAnsw input').val('').removeClass('true').removeClass('false').removeClass('selected');
+        $('#wordQ .inputAnsw input').val('').removeClass('true').removeClass('false').removeClass('selected');
         $('#wordQ .statement').html(this.questions[Game.curType][Game.curQuestion]['statement']);
 
         Game.curRightAnswer = this.questions[Game.curType][Game.curQuestion]['answer'];
-
-        $('.inputAnsw').on('keypress', 'input', function(e) {
+        $('#wordQ .inputAnsw').off('keypress', 'input');
+        $('#wordQ .inputAnsw').on('keypress', 'input', function(e) {
             if (e.which == 13) {
                 Game.enterWord();
             }
@@ -135,7 +142,6 @@ $(function() {
     }
 
     Game.TestTimeout = function() {
-        console.log('timeout');
 
         var right = $('.test[n=' + Game.curRightAnswer + ']');
         right.addClass('true');
@@ -152,6 +158,7 @@ $(function() {
 
     Game.NumberTimeout = function()
     {
+        //console.log('timeout'+Game.curQuestion);
         $('.inputAnsw input').removeClass('false').removeClass('selected').addClass('true');
         $('.inputAnsw input').val(Game.curRightAnswer);
         setTimeout(Game.next, 1500);
@@ -208,6 +215,7 @@ $(function() {
 
     Game.enterNumber = function()
     {
+        console.log('enter'+Game.curQuestion);
         Game.curTime = Timer.stop();
         $('.inputAnsw input').addClass('selected');
         setTimeout(function() {
@@ -218,7 +226,7 @@ $(function() {
     Game.enterWord = function()
     {
         Game.curTime = Timer.stop();
-        $('.inputAnsw input').addClass('selected');
+        $('#wordQ .inputAnsw input').addClass('selected');
         setTimeout(function() {
             Game.checkWord();
         }, 500);
@@ -281,7 +289,7 @@ $(function() {
             Game.game_test_n = Game.questions['game_test_n'];
             //Game.game_test_n = 0;
             Game.game_number_n = Game.questions['game_number_n'];
-            //Game.game_number_n = 0;
+            //Game.game_number_n = 1;
             Game.game_word_n = Game.questions['game_word_n'];
             Game.next();
         });

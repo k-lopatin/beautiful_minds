@@ -105,7 +105,7 @@ Points.check_number = function(correctAnswer, answer) {
         error = 500;
     }
 
-    if (Math.abs(correctAnswer) - Math.abs(answer) <= error)
+    if (Math.abs(correctAnswer - answer) <= error)
         return 0;
     else
         return -1;
