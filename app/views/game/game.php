@@ -64,6 +64,12 @@
                     <input type="number" autofocus />
                 </div>
             </div>
+            <div id="wordQ">
+                <div class="statement"></div>
+                <div class="inputAnsw">
+                    <input type="text" autofocus />
+                </div>
+            </div>
         </div>
         <div id="city">
             <div id="plus">+0</div>

@@ -145,10 +145,13 @@ Points.getPoints = function(type, population, allTime, curTime, isTrue, correctA
         case 'word':
             if (!isTrue) {
                 res = 0.5 + 0.5 * Points.setTime(allTime, curTime);
-                if (Points.find_mistake(correctAnswer, answer) == 1) {
+                console.log(correctAnswer);
+                console.log(answer);
+                var mistakes = Points.find_mistake(correctAnswer, answer);
+                if (mistakes == 1) {
                     res -= 0.25;
                 }
-                else if (Points.find_mistake(correctAnswer, answer) == 2) {
+                else if (mistakes == 2) {
                     res -= 0.35;
                 }
                 else {
