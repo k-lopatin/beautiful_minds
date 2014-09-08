@@ -42,6 +42,7 @@
             <input type="text" name="login" value="" placeholder="логин">
             <input type="text" name="password" value="" placeholder="пароль">
             <input type="submit" value="Войти">
+            или <a href="game/registration"> зарегистрироваться </a>
         </div>
 
         <div id="container">
