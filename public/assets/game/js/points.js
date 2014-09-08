@@ -104,8 +104,7 @@ Points.check_number = function(correctAnswer, answer) {
     else {
         error = 500;
     }
-
-    if (Math.abs(correctAnswer) - Math.abs(answer) <= error)
+    if (Math.abs(correctAnswer - answer) <= error)
         return 0;
     else
         return -1;
@@ -121,6 +120,7 @@ Points.getPoints = function(type, population, allTime, curTime, isTrue, correctA
 {
     answer = answer || null;
     correctAnswer = correctAnswer || null;
+    console.log(Points.check_number(correctAnswer, answer));
     var curPoint = population / (Points.p_number + Points.p_word + Points.p_test);
     var res = 0;
     switch (type) {
