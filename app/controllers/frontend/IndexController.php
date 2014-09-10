@@ -41,6 +41,18 @@ class IndexController extends BaseController
         return 0;
     }
 
+    public function login()
+    {
+        $data = Input::all();
+
+        $player = Player::login($data);
+
+        if(!$player)
+            return 'Вы не зарегистрированны';
+        else
+            return $player;
+    }
+
     public function add()
     {
         $model = $this->model;
@@ -48,9 +60,9 @@ class IndexController extends BaseController
         $data = Input::all();
 
         $rules = [
-            'name' => 'required|min:6',
-            'login' => 'required|min:6',
-            'email' => 'required|email|min:6',
+            'name' => 'required|min:4',
+            'login' => 'required|min:4',
+            'email' => 'required|email',
             'password' => 'required|min:6'
         ];
 

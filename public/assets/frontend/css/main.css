@@ -78,7 +78,7 @@
     text-align: right;
 }
 
-#top_login input[type=text] {
+#top_login input[type=text], #top_login input[type=password] {
     width: 22%;
     height: 30px;
     margin: 10px 0 0 10px;
