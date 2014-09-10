@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="../assets/frontend/css/main.css">
         <link rel="stylesheet" href="../assets/game/css/main.css">
     </head>
-    <?= Form::open(array('url' => 'game/registration', 'files' => true)) ?>
+    <?= Form::open(array('url' => '/registration', 'files' => true)) ?>
     <?= Form::token() ?>
     <div id="slideshow">
         <div class="slide">

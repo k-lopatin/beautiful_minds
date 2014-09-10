@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="assets/frontend/css/main.css">
     </head>
     <body>
-
+    <?= Form::open(array('url' => '/login', 'files' => true)) ?>
         <!--<div id="map_canvas"></div>-->
         <div id="slideshow">
             <div class="slide">
@@ -39,10 +39,18 @@
             </div>
         </div>
         <div id="top_login">
-            <input type="text" name="login" value="" placeholder="логин">
-            <input type="text" name="password" value="" placeholder="пароль">
-            <input type="submit" value="Войти">
-            или <a href="game/registration"> зарегистрироваться </a>
+            <?php
+            if(Auth::check()){
+                echo 'Привет,' .  Auth::user()->login;
+                echo '<a href="/logout">Выйти!</a>';
+            }
+            else{
+                echo Form::text('email', $email, array('placeholder' => 'E-mail'));
+                echo Form::password('password', array('placeholder' => 'Пароль'), $password);
+                echo '<input type="submit" value="Войти"> или <a href="/registration"> зарегистрироваться </a>';
+
+            }
+            ?>
         </div>
 
         <div id="container">
@@ -61,6 +69,6 @@
             <a href="/game" class="try_btn">Завоевать!</a>
         </div>
 
-
+    <?= Form::close() ?>
     </body>
 </html>
