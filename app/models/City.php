@@ -26,7 +26,7 @@ class City extends Eloquent
         $this->save();
         return 1;
     }
-    public function edit($statement, $answer, $complexity, $category, $plustime, $description, $link, $files){
+    public function edit($name, $country, $population, $description, $files,$is_free){
         if($name == '' || strlen( $name ) < 3 || !is_string($name)){
             return 0;
         }
