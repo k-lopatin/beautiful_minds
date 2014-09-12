@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Мозговой штурм</title>
+        <title>Личный кабинет</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,13 +47,10 @@
             else{
                 echo Form::text('email', $email, array('placeholder' => 'E-mail'));
                 echo Form::password('password', array('placeholder' => 'Пароль'), $password);
-                echo '<input type="submit" value="Войти">';
-                echo '<a href="/registration" id="reg_btn"> Регистрация </a>';
+                echo '<input type="submit" value="Войти"> или <a href="/registration"> зарегистрироваться </a>';
+
             }
             ?>
-            <div id="error_message">
-                <?= $message ?>
-            </div>
         </div>
 
         <div id="container">

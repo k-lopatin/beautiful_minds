@@ -43,12 +43,23 @@ class IndexController extends BaseController
 
     public function login()
     {
+        $model = $this->model;
+
         $data = Input::all();
 
         $player = Player::login($data);
 
         if(!$player)
-            return 'Вы не зарегистрированны';
+        {
+            $c = CityLibrary::getRandomFreeCity();
+            $this->viewVars['random_city'] = $c->name;
+            $this->viewVars['name'] = '';
+            $this->viewVars['login'] = '';
+            $this->viewVars['password'] = '';
+            $this->viewVars['email'] = '';
+            $this->viewVars['message'] = 'Неверное имя пользователя или пароль';
+            return View::make('frontend.index', $this->viewVars);
+        }
         else
             return $player;
     }
