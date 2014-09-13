@@ -12,6 +12,7 @@ class IndexController extends BaseController
         $this->viewVars['password'] = '';
         $this->viewVars['email'] = '';
         $this->viewVars['message'] = '';
+        $this->viewVars['player'] = '';
     }
 
     function setVarsByInput(){
@@ -61,7 +62,16 @@ class IndexController extends BaseController
             return View::make('frontend.index', $this->viewVars);
         }
         else
-            return $player;
+            $c = CityLibrary::getRandomFreeCity();
+            $this->viewVars['random_city'] = $c->name;
+            $this->viewVars['name'] = '';
+            $this->viewVars['login'] = '';
+            $this->viewVars['password'] = '';
+            $this->viewVars['email'] = '';
+            $this->viewVars['message'] = '';
+            $this->viewVars['cities'] = City::all();
+            $this->viewVars['player'] = $player;
+            return View::make('frontend.personal_area', $this->viewVars);
     }
 
     public function add()
@@ -112,7 +122,6 @@ class IndexController extends BaseController
     {
         $c = CityLibrary::getRandomFreeCity();
         $this->viewVars['random_city'] = $c->name;
-
         return View::make('frontend.index', $this->viewVars);
     }
 
