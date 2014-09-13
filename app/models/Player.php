@@ -10,6 +10,7 @@ class Player extends Eloquent implements UserInterface, RemindableInterface {
     use UserTrait, RemindableTrait;
 
     protected $table = 'players';
+
     public $timestamps = false; //delete updated_at and created_at properties
 
     public function add($name, $login, $password, $email){
