@@ -44,24 +44,10 @@ class IndexController extends BaseController
 
     public function login()
     {
-        $model = $this->model;
+        if(Auth::check()){
 
-        $data = Input::all();
+            $model = $this->model;
 
-        $player = Player::login($data);
-
-        if(!$player)
-        {
-            $c = CityLibrary::getRandomFreeCity();
-            $this->viewVars['random_city'] = $c->name;
-            $this->viewVars['name'] = '';
-            $this->viewVars['login'] = '';
-            $this->viewVars['password'] = '';
-            $this->viewVars['email'] = '';
-            $this->viewVars['message'] = 'Неверное имя пользователя или пароль';
-            return View::make('frontend.index', $this->viewVars);
-        }
-        else
             $c = CityLibrary::getRandomFreeCity();
             $this->viewVars['random_city'] = $c->name;
             $this->viewVars['name'] = '';
@@ -69,9 +55,53 @@ class IndexController extends BaseController
             $this->viewVars['password'] = '';
             $this->viewVars['email'] = '';
             $this->viewVars['message'] = '';
-            $this->viewVars['cities'] = City::all();
-            $this->viewVars['player'] = $player;
+            $this->viewVars['cities'] = City::all();//Исправить этот ужасный код
             return View::make('frontend.personal_area', $this->viewVars);
+        }
+        else{
+
+            $model = $this->model;
+            if (Input::has('email'))
+            {
+                $data = Input::all();
+
+                $player = Player::login($data);
+
+                if(!$player)
+                {
+                    $c = CityLibrary::getRandomFreeCity();
+                    $this->viewVars['random_city'] = $c->name;
+                    $this->viewVars['name'] = '';
+                    $this->viewVars['login'] = '';
+                    $this->viewVars['password'] = '';
+                    $this->viewVars['email'] = '';
+                    $this->viewVars['message'] = 'Неверное имя пользователя или пароль';
+                    return View::make('frontend.index', $this->viewVars);
+                }
+                else{
+                    $c = CityLibrary::getRandomFreeCity();
+                    $this->viewVars['random_city'] = $c->name;
+                    $this->viewVars['name'] = '';
+                    $this->viewVars['login'] = '';
+                    $this->viewVars['password'] = '';
+                    $this->viewVars['email'] = '';
+                    $this->viewVars['message'] = '';
+                    $this->viewVars['cities'] = City::all();
+                    $this->viewVars['player'] = $player;
+                    return View::make('frontend.personal_area', $this->viewVars);
+                }
+            }
+                else{
+                    $c = CityLibrary::getRandomFreeCity();
+                    $this->viewVars['random_city'] = $c->name;
+                    $this->viewVars['name'] = '';
+                    $this->viewVars['login'] = '';
+                    $this->viewVars['password'] = '';
+                    $this->viewVars['email'] = '';
+                    $this->viewVars['message'] = '';
+                    return View::make('frontend.index', $this->viewVars);
+            }
+        }
     }
 
     public function add()

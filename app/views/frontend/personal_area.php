@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="assets/frontend/css/main.css">
 </head>
 <body>
-<?= Form::open(array('url' => '/login', 'files' => true)) ?>
+<?= Form::open(array('url' => '/', 'files' => true)) ?>
 <!--<div id="map_canvas"></div>-->
 <div id="slideshow">
     <div class="slide">

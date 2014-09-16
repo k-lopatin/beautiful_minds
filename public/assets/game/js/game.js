@@ -66,6 +66,10 @@ $(function() {
                     console.log('w' + Game.curQuestion);
                     Game.showWordQuestion();
                 } else {
+                    if(Game.Points>=0.85*1000000 && Game.curQuestion > Game.game_word_n)
+                        setTimeout(location.href='/registration',3000);
+                    else
+                        setTimeout(location.href='/',3000);;
 
                 }
                 break;
@@ -137,7 +141,6 @@ $(function() {
                 Game.enterWord();
             }
         })
-
         Timer.start(10, Game.WordTimeout);
     }
 
