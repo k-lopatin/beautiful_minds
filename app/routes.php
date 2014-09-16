@@ -106,10 +106,9 @@ Route::any('getgamejson/', 'RandomQuestionController@getGameJson');
 
 Route::any('game/', 'GameController@showGame');
 Route::any('/registration', 'IndexController@add');
-Route::any('/login', 'IndexController@login');
+Route::any('/', 'IndexController@login');
 Route::any('/logout', function(){Auth::logout(); return Redirect::to('/'); });
 
-Route::any('/', 'IndexController@index');
 
 /**
 * END ROUTES
