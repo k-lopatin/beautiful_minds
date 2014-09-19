@@ -148,11 +148,10 @@ class IndexController extends BaseController
         return View::make('frontend.register', $this->viewVars);
     }
 
-    public function index()
+    public function rate()
     {
-        $c = CityLibrary::getRandomFreeCity();
-        $this->viewVars['random_city'] = $c->name;
-        return View::make('frontend.index', $this->viewVars);
+        Player::setPoints();
+        return View::make('frontend.rating', $this->viewVars);
     }
 
 

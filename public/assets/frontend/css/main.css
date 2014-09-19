@@ -147,7 +147,7 @@
 #top_login input[type=submit] {
     width: 18%;
     height: 30px;
-    margin: 10px 20px 0 10px;
+    margin: 10px 10px 0 10px;
     padding: 0 10px;
     font-size: 16px;
     color: #fff;
@@ -239,6 +239,27 @@
     text-align: center;
 }
 
+#rating {
+    position: absolute;
+    margin: 0 auto;
+    margin-left: 30%;
+    z-index: 100;
+    color: #fff;
+    font-size: 16px;
+}
+
+#rating h1 {
+    position: absolute;
+    text-transform: none;
+    text-align: center;
+    left: 20%;
+    border-top: none;
+    border-bottom: none;
+    width: 300px;
+    letter-spacing: 5px;
+    font-size: 36px;
+}
+
 #my_cities {
     position: absolute;
     margin: 0 auto;
@@ -272,7 +293,33 @@ table.ceny td {
     text-align: center; /* текст по центру */
     width: 200px;
 }
-#my_cities h1 {
+
+table.ceny th {
+    border-bottom: 1px solid #ECEDEE; /* рамка снизу ячейки */
+    border-right: 1px solid #ECEDEE; /* рамка справа ячейки */
+    border-color: #fcf4f9;
+    font-size: 16px; /* размер шрифта */
+    font-weight: bold;
+    padding: 4px; /* внутренний отступ в ячейки от края */
+    vertical-align: middle; /* горизонтальное выравнивание */
+    text-align: center; /* текст по центру */
+    width: 200px;
+    background: #201230;
+}
+
+table.ceny td#one, th#one {
+    width: 8px;
+}
+
+table.ceny td#second, th#second  {
+    width: 120px;
+}
+
+table.ceny td#third, th#third {
+    width: 120px;
+}
+
+#my_cities h1{
     position: absolute;
     text-transform: none;
     text-align: left;
@@ -289,9 +336,9 @@ table.ceny td {
     text-decoration: none;
     text-align: center;
     font-family: Geneva, Arial, Helvetica, sans-serif;
-    width: 18%;
+    width: 16%;
     height: 25px;
-    margin: 10px 20px 0 10px;
+    margin: 10px 20px 0 0px;
     padding: 0 10px;
     padding-top: 5px;
     font-size: 16px;
