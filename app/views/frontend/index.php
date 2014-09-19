@@ -40,16 +40,10 @@
         </div>
         <div id="top_login">
             <?php
-            if(Auth::check()){
-                echo 'Привет,' .  Auth::user()->login;
-                echo '<a href="/logout">Выйти!</a>';
-            }
-            else{
                 echo Form::text('email', $email, array('placeholder' => 'E-mail'));
                 echo Form::password('password', array('placeholder' => 'Пароль'), $password);
                 echo '<input type="submit" value="Войти">';
                 echo '<a href="/registration" id="reg_btn"> Регистрация </a>';
-            }
             ?>
             <div id="error_message">
                 <?= $message ?>

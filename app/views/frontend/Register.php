@@ -40,10 +40,8 @@
         </div>
     </div>
     <div id="registration">
-        <div class="row">
-            <div class="large-12 columns">
-                <h3><?= $message ?></h3>
-            </div>
+        <div>
+            <h3><?= $message ?></h3>
         </div>
         <?= Form::text('name', $name, array('placeholder' => 'Имя')) ?>
         <?= Form::text('login', $login, array('placeholder' => 'Логин')) ?>

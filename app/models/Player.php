@@ -31,4 +31,19 @@ class Player extends Eloquent implements UserInterface, RemindableInterface {
             return false;
     }
 
+    public static function setPoints(){
+        $cities = City::all();
+        $players = Player::all();
+        foreach($cities as $c){
+            foreach($players as $p)
+            {
+                if($c->is_free == $p->id)
+                {
+                    $p->Points = $p->Points + $c->population;
+                    $p->save();
+                }
+            }
+        }
+    }
+
 }
