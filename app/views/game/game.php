@@ -72,6 +72,8 @@
             </div>
         </div>
         <div id="city">
+            <div id="city_name"></div>
+            <div id="city_population"></div>
             <div id="plus">+0</div>
             <div id="points">0</div>
         </div>

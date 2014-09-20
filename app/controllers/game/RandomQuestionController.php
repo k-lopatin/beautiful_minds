@@ -58,6 +58,12 @@ class RandomQuestionController extends BaseController
 
     public function getGameJson()
     {
+        if (Session::has('city'))
+        {
+            $city = Session::get('city');
+            $population = Session::get('cityPopulation');
+        }
+
         $game = array(
             'tests' => $this->getQuestions('QuestionTest', Config::get('game.game_test_n')),
             'game_test_n' => Config::get('game.game_test_n'),
@@ -65,6 +71,8 @@ class RandomQuestionController extends BaseController
             'game_number_n' => Config::get('game.game_number_n'),
             'words' => $this->getQuestions('QuestionWord', Config::get('game.game_word_n')),
             'game_word_n' => Config::get('game.game_word_n'),
+            'city' => $city,
+            'population' => $population
         );
         echo json_encode($game);
     }

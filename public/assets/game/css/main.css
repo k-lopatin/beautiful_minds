@@ -84,12 +84,25 @@
     color: #fff;
     font-size: 16px;
 }
+#city #city_name {
+    text-align: center;
+    margin: 20px 0 15px 0;
+    font-size: 28px;
+    color: #ffb;
+}
+#city #city_population {
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: #ffe;
+}
 #city #points {
     width: 70%;
     margin: 20px auto;
     font-size: 30px;
     font-weight: bold;
     color: #ccc;
+    text-align: center;
 }
 #city #plus {
     width: 65%;
@@ -97,6 +110,7 @@
     font-size: 25px;
     font-weight: bold;
     color: #bbb;
+    text-align: center;
 }
 
 
