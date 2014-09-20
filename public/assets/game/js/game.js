@@ -39,8 +39,8 @@ $(function() {
     Game.next = function()
     {
         /*console.log(Game.curType);
-        console.log(Game.curQuestion);
-        console.log(Game.game_word_n);*/
+         console.log(Game.curQuestion);
+         console.log(Game.game_word_n);*/
         switch (Game.curType) {
             case 'tests':
                 if (++Game.curQuestion < Game.game_test_n) {
@@ -68,10 +68,11 @@ $(function() {
                     console.log('w' + Game.curQuestion);
                     Game.showWordQuestion();
                 } else {
-                    if(Game.Points>=0.85*1000000 && Game.curQuestion > Game.game_word_n)
-                        setTimeout(location.href='/registration',3000);
+                    if (Game.Points >= 0.85 * 1000000 && Game.curQuestion > Game.game_word_n)
+                        setTimeout(location.href = '/registration', 3000);
                     else
-                        setTimeout(location.href='/',3000);;
+                        setTimeout(location.href = '/', 3000);
+                    ;
 
                 }
                 break;
@@ -115,7 +116,7 @@ $(function() {
     }
     Game.showNumberQuestion = function()
     {
-        console.log('t'+Game.curQuestion);
+        console.log('t' + Game.curQuestion);
         $('#city #plus').html('+0');
         $('.inputAnsw input').val('').removeClass('true').removeClass('false').removeClass('selected');
         $('#numberQ .statement').html(this.questions[Game.curType][Game.curQuestion]['statement']);
@@ -220,7 +221,7 @@ $(function() {
 
     Game.enterNumber = function()
     {
-        console.log('enter'+Game.curQuestion);
+        console.log('enter' + Game.curQuestion);
         Game.curTime = Timer.stop();
         $('.inputAnsw input').addClass('selected');
         setTimeout(function() {
@@ -272,7 +273,11 @@ $(function() {
         } else {
             curAnswInput.removeClass('selected').addClass('false');
             console.log('t' + curAnswInput.val());
-            var p = Points.getPoints('word', Game.population, 10, Game.curTime, false, Game.curRightAnswer, curAnswInput.val());
+            var p = 0;
+            if (curAnswInput.val() != '') {
+                var p = Points.getPoints('word', Game.population, 10, Game.curTime, false, Game.curRightAnswer, curAnswInput.val());
+            }
+
             Game.addPoints(p);
             var i = 5;
             var blink = setInterval(function() {
@@ -289,8 +294,8 @@ $(function() {
 
     Game.setCity = function()
     {
-        $('#city_name').html( Game.questions['city'] );
-        $('#city_population').html( Game.questions['population'] );
+        $('#city_name').html(Game.questions['city']);
+        $('#city_population').html(Game.questions['population']);
         Game.population = Game.questions['population'];
     }
 
@@ -303,6 +308,8 @@ $(function() {
             Game.game_number_n = Game.questions['game_number_n'];
             //Game.game_number_n = 1;
             Game.game_word_n = Game.questions['game_word_n'];
+
+            Points.setQNumber(Game.game_test_n, Game.game_number_n, Game.game_word_n, 0, 0);
             Game.setCity();
             Game.next();
         });

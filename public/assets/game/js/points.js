@@ -1,12 +1,12 @@
-function Points(p_number, p_word, p_test, p_order, p_map) {
+var Points = new Object();
+
+Points.setQNumber = function(p_test, p_number, p_word, p_order, p_map) {
     this.p_number = p_number;
     this.p_word = p_word;
     this.p_test = p_test;
     this.p_order = p_order;
     this.p_map = p_map;
 }
-
-Points = new Points(4, 4, 5, 1, 2);
 
 Points.find_mistake = function(rightWord, checkingWord) {
     var res = 0;
@@ -111,9 +111,14 @@ Points.check_number = function(correctAnswer, answer) {
 }
 
 Points.setTime = function(T, t) {
+    var res = 0;
     if (t == 0)
         t = 1;
-    return (t / T).toFixed(2);
+    if (t > 0.5 * T)
+        res = 1;
+    else
+        res = (t / T).toFixed(2);
+    return res;
 }
 
 Points.getPoints = function(type, population, allTime, curTime, isTrue, correctAnswer, answer)
