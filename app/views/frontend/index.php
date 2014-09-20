@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Разбуди интелект! | Мозговой штурм?</title>
+        <title>Мозговой штурм</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="assets/frontend/css/main.css">
     </head>
     <body>
-
+    <?= Form::open(array('url' => '/', 'files' => true)) ?>
         <!--<div id="map_canvas"></div>-->
         <div id="slideshow">
             <div class="slide">
@@ -39,9 +39,15 @@
             </div>
         </div>
         <div id="top_login">
-            <input type="text" name="login" value="" placeholder="логин">
-            <input type="text" name="password" value="" placeholder="пароль">
-            <input type="submit" value="Войти">
+            <?php
+                echo Form::text('email', $email, array('placeholder' => 'E-mail'));
+                echo Form::password('password', array('placeholder' => 'Пароль'), $password);
+                echo '<input type="submit" value="Войти">';
+                echo '<a href="/registration" id="reg_btn"> Регистрация </a>';
+            ?>
+            <div id="error_message">
+                <?= $message ?>
+            </div>
         </div>
 
         <div id="container">
@@ -60,6 +66,6 @@
             <a href="/game" class="try_btn">Завоевать!</a>
         </div>
 
-
+    <?= Form::close() ?>
     </body>
 </html>

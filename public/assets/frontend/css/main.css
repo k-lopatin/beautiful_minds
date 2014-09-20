@@ -65,20 +65,77 @@
     border: 0;
 }
 
-#top_login {
+#error_message{
+    position: absolute;
+    left:35%;
+    margin: 0 auto;
+    color: red;
+    font-size: 22px;
+    text-align: center;
+}
+
+#top_welcome {
     position: absolute;
     top: 0;
     left: 20%;
     z-index: 100;
     width: 60%;
-    height: 55px;
+    height: 75px;
     background: rgba(52, 27, 43, 0.9);
     color: #fff;
     font-size: 16px;
-    text-align: right;
 }
 
-#top_login input[type=text] {
+#exit{
+    position: absolute;
+    float: right;
+    right: 0px;
+    display: block;
+    color: #fff;
+    font-size: 24px;
+}
+
+#exit a{
+    text-decoration: none;
+    text-align: center;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    width: 48%;
+    height: 25px;
+    margin: 20px 20px 0 10px;
+    padding: 0 10px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    background: #83d3c9;
+    border: 0;
+    float: right;
+}
+
+#login{
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    display: block;
+    color: #fff;
+    font-size: 24px;
+    float: left;
+}
+
+#top_login {
+     position: absolute;
+     top: 0;
+     left: 20%;
+     z-index: 100;
+     width: 60%;
+     height: 75px;
+     background: rgba(52, 27, 43, 0.9);
+     color: #fff;
+     font-size: 16px;
+     text-align: right;
+ }
+
+#top_login input[type=text], #top_login input[type=password] {
     width: 22%;
     height: 30px;
     margin: 10px 0 0 10px;
@@ -90,7 +147,7 @@
 #top_login input[type=submit] {
     width: 18%;
     height: 30px;
-    margin: 10px 20px 0 10px;
+    margin: 10px 10px 0 10px;
     padding: 0 10px;
     font-size: 16px;
     color: #fff;
@@ -99,16 +156,28 @@
     border: 0;
 }
 
+#go_game {
+    position: absolute;
+    margin: 0 auto;
+    left: 32%;
+    top: 70%;
+    z-index: 100;
+    color: #fff;
+    font-size: 16px;
+}
+
 #container {
     position: absolute;
     top: 0;
     left: 20%;
     z-index: 100;
     width: 60%;
+    height: 70%;
     background: rgba(52, 27, 43, 0.8);
     color: #fff;
     font-size: 16px;
 }
+
 #container h1 {
     text-transform: uppercase;
     text-align: center;
@@ -163,7 +232,6 @@
     display: block;
     margin: 15px auto 50px auto;
     background: #fd4b46;
-    padding: 7px 15px;
     width: 300px;
     border-radius: 30px;
     color: #fff;
@@ -171,6 +239,115 @@
     text-align: center;
 }
 
+#rating {
+    position: absolute;
+    margin: 0 auto;
+    margin-left: 30%;
+    z-index: 100;
+    color: #fff;
+    font-size: 16px;
+}
+
+#rating h1 {
+    position: absolute;
+    text-transform: none;
+    text-align: center;
+    left: 20%;
+    border-top: none;
+    border-bottom: none;
+    width: 300px;
+    letter-spacing: 5px;
+    font-size: 36px;
+}
+
+#my_cities {
+    position: absolute;
+    margin: 0 auto;
+    z-index: 100;
+    color: #fff;
+    font-size: 16px;
+}
+
+table.ceny {
+    border: 1px solid #ECEDEE; /* общая рамка вокруг таблицы */
+    border-color: #fcf4f9;
+    margin: 45px 0 0 50px; /* отступ сверху и снизу от таблицы 10px, слева и справа 0 */
+    width: 100%; /* ширина таблицы */
+    border-collapse: collapse;
+}
+table.ceny tr:nth-child(even) {
+    background: #665b5b; /* цвет фона строки */
+}
+/* параметры только для первой ячейки в каждой из строк */
+table.ceny tr:nth-child(odd) {
+    background: #301b28;
+}
+table.ceny td {
+    border-bottom: 1px solid #ECEDEE; /* рамка снизу ячейки */
+    border-right: 1px solid #ECEDEE; /* рамка справа ячейки */
+    border-color: #fcf4f9;
+    font-size: 16px; /* размер шрифта */
+    font-weight: bold;
+    padding: 4px; /* внутренний отступ в ячейки от края */
+    vertical-align: middle; /* горизонтальное выравнивание */
+    text-align: center; /* текст по центру */
+    width: 200px;
+}
+
+table.ceny th {
+    border-bottom: 1px solid #ECEDEE; /* рамка снизу ячейки */
+    border-right: 1px solid #ECEDEE; /* рамка справа ячейки */
+    border-color: #fcf4f9;
+    font-size: 16px; /* размер шрифта */
+    font-weight: bold;
+    padding: 4px; /* внутренний отступ в ячейки от края */
+    vertical-align: middle; /* горизонтальное выравнивание */
+    text-align: center; /* текст по центру */
+    width: 200px;
+    background: #201230;
+}
+
+table.ceny td#one, th#one {
+    width: 8px;
+}
+
+table.ceny td#second, th#second  {
+    width: 120px;
+}
+
+table.ceny td#third, th#third {
+    width: 120px;
+}
+
+#my_cities h1{
+    position: absolute;
+    text-transform: none;
+    text-align: left;
+    left: 60px;
+    border-top: none;
+    border-bottom: none;
+    width: 300px;
+    letter-spacing: 5px;
+    font-size: 36px;
+}
+
+
+#reg_btn{
+    text-decoration: none;
+    text-align: center;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    width: 16%;
+    height: 25px;
+    margin: 10px 20px 0 0px;
+    padding: 0 10px;
+    padding-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    background: #83d3c9;
+    border: 0;
+    float: right;
+}
 #container .more {
     font-size: 16px;
     font-weight: bold;
@@ -181,4 +358,17 @@
 
 .clear {
     clear: both;
+}
+#avatar {
+    background: url('../img/avatar.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    right: 40px;
+    top:20px;
+    height: 200px;
+    width: 200px;
+    float: right;
+    margin: 3px 0 5px 0;
 }

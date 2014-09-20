@@ -1,33 +1,49 @@
 <?php
 
-class Player extends Eloquent
-{
-    
+use Illuminate\Auth\UserTrait;
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\Reminders\RemindableInterface;
+
+class Player extends Eloquent implements UserInterface, RemindableInterface {
+
+    use UserTrait, RemindableTrait;
+
     protected $table = 'players';
+
     public $timestamps = false; //delete updated_at and created_at properties
 
     public function add($name, $login, $password, $email){
-        if($name == '' || iconv_strlen($name,'UTF-8')<2){
-            return 0;
-        }
-        if($login == '' || strlen( $login ) < 2){
-            return 0;
-        }
-        if($password == '' || strlen( $password ) < 2){
-            return 0;
-        }
-        if($email == '' || strlen( $email ) < 5){
-            return 0;
-        }
         $password = Hash::make($password);
         $this->name = $name;
         $this->login = $login;
         $this->password = $password;
         $this->email = $email;
         $this->save();
-        return 1;
+        //return 1;
+    }
+    public static function login($data)
+    {
+        if (Auth::attempt(array('email' => $data['email'], 'password' => $data['password']))) {
+            return Auth::user();
+        }
+        else
+            return false;
     }
 
-
+    public static function setPoints(){
+        $cities = City::all();
+        $players = Player::all();
+        foreach($cities as $c){
+            foreach($players as $p)
+            {
+                if($c->is_free == $p->id)
+                {
+                    $p->Points = $p->Points + $c->population;
+                    $p->save();
+                }
+            }
+        }
+    }
 
 }

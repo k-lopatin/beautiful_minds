@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="../assets/frontend/css/main.css">
         <link rel="stylesheet" href="../assets/game/css/main.css">
     </head>
-    <?= Form::open(array('url' => 'game/registration', 'files' => true)) ?>
+    <?= Form::open(array('url' => '/registration', 'files' => true)) ?>
     <?= Form::token() ?>
     <div id="slideshow">
         <div class="slide">
@@ -40,10 +40,8 @@
         </div>
     </div>
     <div id="registration">
-        <div class="row">
-            <div class="large-12 columns">
-                <h3><?= $message ?></h3>
-            </div>
+        <div>
+            <h3><?= $message ?></h3>
         </div>
         <?= Form::text('name', $name, array('placeholder' => 'Имя')) ?>
         <?= Form::text('login', $login, array('placeholder' => 'Логин')) ?>
