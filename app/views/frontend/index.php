@@ -16,13 +16,12 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOTFFHfkbIVlNQzCf_Batc4V-WLTzH74c&sensor=TRUE">
     </script>
     <script type="text/javascript" src="assets/frontend/js/google_maps.js"></script>-->
-        <script type="text/javascript" src="assets/frontend/js/main.js"></script>
         <script type="text/javascript" src="assets/frontend/js/slider.js"></script>
 
         <link rel="stylesheet" href="assets/frontend/css/main.css">
     </head>
     <body>
-    <?= Form::open(array('url' => '/', 'files' => true)) ?>
+        <?= Form::open(array('url' => '/', 'files' => true)) ?>
         <!--<div id="map_canvas"></div>-->
         <div id="slideshow">
             <div class="slide">
@@ -39,11 +38,12 @@
             </div>
         </div>
         <div id="top_login">
+            <a href="http://citystorm.com/" class="logo">citystorm.com</a>
             <?php
-                echo Form::text('email', $email, array('placeholder' => 'E-mail'));
-                echo Form::password('password', array('placeholder' => 'Пароль'), $password);
-                echo '<input type="submit" value="Войти">';
-                echo '<a href="/registration" id="reg_btn"> Регистрация </a>';
+            echo Form::text('email', $email, array('placeholder' => 'E-mail'));
+            echo Form::password('password', array('placeholder' => 'Пароль'), $password);
+            echo '<input type="submit" value="Войти">';
+            echo '<a href="/registration" id="reg_btn"> Регистрация </a>';
             ?>
             <div id="error_message">
                 <?= $message ?>
@@ -54,18 +54,18 @@
             <h1>Мозговой штурм!</h1>
             <ul>
                 <li>Выбери город, который хочешь завоевать</li>
-                <li>Отвечай вопросы и получай поддержку населения</li>
+                <li>Отвечай на вопросы и получай поддержку населения</li>
                 <li>Если соберешь достаточно голосов в свою поддержку, станешь главой этого города и сможешь собирать дань с жителей</li>
-                <li>Узнавай правильные ответы, а также пояснения к ним, чтобы повысить уровень своей эрудиции</li>
+                <!--<li>Узнавай правильные ответы, а также пояснения к ним, чтобы повысить уровень своей эрудиции</li>-->
                 <li>Следи, чтобы в твоем городе не возникла революция, а также защищай город от других завоевателей</li>
                 <li>Попробуй завоевать города друзей и покажи кто здесь главный</li>
                 <li>Завоевывай больше городов, получай титулы и поднимайся в рейтинге</li>
-                <li>Прокачай свой интеллект и сообразительность вместе с нами</li>
+                <li>Прокачай свой интеллект и сообразительность вместе с нами!</li>
             </ul>
             <p class="try">Мы подобрали вам случайный город: <span class="city"><?= $random_city ?></span></p>
             <a href="/game" class="try_btn">Завоевать!</a>
         </div>
 
-    <?= Form::close() ?>
+        <?= Form::close() ?>
     </body>
 </html>

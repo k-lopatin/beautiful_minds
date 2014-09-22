@@ -2,10 +2,16 @@ $(function() {
 
     var divarr = $('#slideshow .slide');
     var i = 0;
-    $('#slideshow div').height($(window).height());
+    var h = $(window).height() > $(document).height() ? $(window).height() : $(document).height();
+    var w = $(window).width() > $(document).width() ? $(window).width() : $(document).width();
+    $('#slideshow div').height(h);
+    $('#slideshow div').width(w);
 
     $(window).resize(function() {
-        $('#slideshow div').height($(window).height());
+        var h = $(window).height() > $(document).height() ? $(window).height() : $(document).height();
+        var w = $(window).width() > $(document).width() ? $(window).width() : $(document).width();
+        $('#slideshow div').height(h);
+        $('#slideshow div').width(w);
     });
 
     setInterval(function() {
