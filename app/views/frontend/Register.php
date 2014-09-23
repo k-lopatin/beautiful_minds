@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Разбуди интелект! | Мозговой штурм?</title>
+        <title>Мозговой штурм | Регистрация</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,7 +39,18 @@
             <img src="/assets/frontend/img/p4.jpg">
         </div>
     </div>
-    <div id="registration">
+    <div id="top_login">
+        <a href="http://citystorm.com/" class="logo">citystorm.com</a>
+        <?php
+        echo Form::text('email', $email, array('placeholder' => 'E-mail'));
+        echo Form::password('password', array('placeholder' => 'Пароль'), $password);
+        echo '<input type="submit" value="Войти">';
+        echo '<a href="/registration" id="reg_btn"> Регистрация </a>';
+        ?>
+    </div>
+    <div id="container" class="registration">
+        <div id="alphamessage">Проект находится в стадии разработки. </br>
+            Зарегистрируйтесь, чтобы первыми узнать о старте бета-тестировании игры, а также получить приятный бонус!</div>
         <div>
             <h3><?= $message ?></h3>
         </div>

@@ -30,20 +30,20 @@
     left: 0;
 }
 
-#registration {
-    position: absolute;
-    z-index: 100;
-    margin: 5% 15% 0 15%;
-    padding-top: 10%;
-    width: 70%;
-    height: 60%;
-    background: rgba(52, 27, 43, 0.9);
+.registration {
     color: #fff;
     font-size: 16px;
     text-align: center;
 }
+.registration h3 {
+    width: 80%;
+    margin: 5px auto 20px auto;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: #fed;
+}
 
-#registration input[type=text],#registration input[type=password] {
+.registration input[type=text],.registration input[type=password] {
     width: 30%;
     height: 50px;
     margin: auto;
@@ -54,7 +54,7 @@
     display: block;
     border: 0;
 }
-#registration input[type=submit], #registration input[type=label]{
+.registration input[type=submit], #registration input[type=label]{
     width: 18%;
     height: 50px;
     margin: auto;
@@ -66,6 +66,10 @@
     background: #83d3c9;
     display: block;
     border: 0;
+}
+.registration #alphamessage {
+    margin: 30px auto 30px auto;
+    font-size: 19px;
 }
 
 #error_message{

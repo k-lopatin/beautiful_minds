@@ -48,7 +48,7 @@
             <input type="submit" value="Войти">
         </div>-->
 
-        <div id="container">
+        <div id="container" class="game_main">
             <div id="bg1">
                 <div id="bg2"><div id="my_timer"></div></div>
             </div>
@@ -73,9 +73,12 @@
         </div>
         <div id="city">
             <div id="city_name"></div>
+            <div class="label">Население:</div>
             <div id="city_population"></div>
-            <div id="plus">+0</div>
+            <div class="label">Всего баллов:</div>
             <div id="points">0</div>
+            <div class="label">Баллов за текущий вопрос:</div>
+            <div id="plus">+0</div>
         </div>
 
 

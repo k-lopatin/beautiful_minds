@@ -69,7 +69,7 @@ class IndexController extends BaseController
             if (Input::has('email')) {
                 $data = Input::all();
 
-                $player = Player::login($data);
+                /*$player = Player::login($data);
 
                 $c = CityLibrary::getRandomFreeCity();
                 $this->viewVars['random_city'] = $c->name;
@@ -81,7 +81,12 @@ class IndexController extends BaseController
                 } else {
                     $this->setViewVarsStandart('', $player);
                     return View::make('frontend.personal_area', $this->viewVars);
-                }
+                }*/
+                $c = CityLibrary::getRandomFreeCity();
+                $this->viewVars['random_city'] = $c->name;
+                $this->putCitySession($c);
+                $this->setViewVarsStandart();
+                return View::make('frontend.index', $this->viewVars);
             } else {
                 $c = CityLibrary::getRandomFreeCity();
                 $this->viewVars['random_city'] = $c->name;
@@ -106,6 +111,13 @@ class IndexController extends BaseController
         ];
 
         $val = Validator::make($data, $rules);
+        $m = '';
+        if (Input::has('a')) {
+            $m = 'Вы успешно попробовали завоевать город в тестовом режиме. Зарегистрируйтесь, '
+                . 'чтобы первыми узнать о старте бета-версии версии игры.';
+        }
+
+        $this->setViewVarsStandart($m);
 
         if (Input::has('name')) {
             $q = new Player;
@@ -120,6 +132,8 @@ class IndexController extends BaseController
                 $this->viewVars['message'] = 'Введенный E-mail уже занят';
             } else {
                 $q->add(Input::get('name'), Input::get('login'), Input::get('password'), Input::get('email'));
+                $this->setViewVarsStandart('Спасибо за регистрацию.');
+                return View::make('frontend.message', $this->viewVars);
             }
             /* if ($q->add(Input::get('name'), Input::get('login'), Input::get('password'), Input::get('email'))) {
               /*if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')))) {
